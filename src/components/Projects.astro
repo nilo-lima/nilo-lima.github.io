@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { t, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -8,6 +9,9 @@ interface Props {
 const { lang = 'pt-BR' } = Astro.props;
 const s = t(lang).projects;
 const sectionId = lang === 'en' ? 'projects' : 'projetos';
+
+const pinned = (await getCollection('projects', ({ data }) => data.pinned))
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 <section id={sectionId} class="py-16 px-6 max-w-5xl mx-auto border-t border-primary/10">
   <div class="grid md:grid-cols-[1fr_2fr] gap-12">
@@ -16,14 +20,14 @@ const sectionId = lang === 'en' ? 'projects' : 'projetos';
       <p class="text-secondary text-sm mt-4 leading-relaxed">{s.lead}</p>
     </div>
     <div class="space-y-12">
-      {s.items.map(project => (
+      {pinned.map(project => (
         <div class="group relative">
           <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4">
             <h3 class="text-2xl font-bold text-accent group-hover:text-primary transition-colors">
-              {project.title}
+              {project.data.title}
             </h3>
             <div class="flex flex-wrap gap-2">
-              {project.tags.map(tag => (
+              {project.data.tags.map(tag => (
                 <span class="text-[10px] font-mono border border-primary/20 px-2 py-0.5 text-primary/70">
                   {tag}
                 </span>
@@ -31,10 +35,10 @@ const sectionId = lang === 'en' ? 'projects' : 'projetos';
             </div>
           </div>
           <p class="text-secondary text-lg mb-6 leading-relaxed">
-            {project.description}
+            {project.data.description}
           </p>
           <a
-            href={project.link}
+            href={project.data.link}
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm font-mono text-primary inline-flex items-center gap-2 hover:translate-x-1 transition-transform"
@@ -43,8 +47,16 @@ const sectionId = lang === 'en' ? 'projects' : 'projetos';
           </a>
         </div>
       ))}
-      <div class="pt-4 border-t border-primary/5 text-sm font-mono text-secondary">
-        {s.allRepos} <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">github.com/nilo-lima</a>.
+      <div class="pt-4 border-t border-primary/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm font-mono">
+        <a
+          href="/projetos"
+          class="text-primary border border-primary/30 hover:border-primary px-4 py-2 transition-colors self-start"
+        >
+          {s.viewAll} -&gt;
+        </a>
+        <span class="text-secondary">
+          {s.allRepos} <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">github.com/nilo-lima</a>
+        </span>
       </div>
     </div>
   </div>
