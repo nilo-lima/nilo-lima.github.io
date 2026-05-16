@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://nilo-lima.github.io" target="_blank">
-    <img src="https://img.shields.io/badge/🌐_Acessar_Site-050505?style=for-the-badge&logoColor=38BDF8" alt="Site ao vivo">
-  </a>
-</p>
-
 # Portfólio - Nilo Lima Jr
 
 Código-fonte do meu portfólio pessoal. Site estático gerado com **Astro**, estilizado com **Tailwind CSS** e publicado via **GitHub Pages**.
@@ -11,8 +5,11 @@ Código-fonte do meu portfólio pessoal. Site estático gerado com **Astro**, es
 Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#050505 · #38BDF8 · #94A3B8`. Bilíngue PT-BR / EN com i18n manual via `src/i18n/ui.ts`.
 
 <p align="left">
-  <a href="https://github.com/nilo-lima/nilo-lima.github.io" target="_blank">
-    <img src="https://img.shields.io/badge/Repositório-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  <a href="https://nilo-lima.github.io" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Acessar_Portfólio-050505?style=for-the-badge&logoColor=38BDF8" alt="Acessar Portfólio">
+  </a>
+  <a href="https://github.com/nilo-lima/" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://linkedin.com/in/nilolima" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
