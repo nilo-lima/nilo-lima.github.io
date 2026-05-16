@@ -1,0 +1,34 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt-BR' } = Astro.props;
+const s = t(lang).techStack;
+---
+<section id="skills" class="py-16 px-6 max-w-5xl mx-auto border-t border-primary/10">
+  <div class="grid md:grid-cols-[1fr_2fr] gap-12">
+    <div>
+      <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase">{s.tag}</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-8">
+      {s.categories.map(stack => (
+        <div class="space-y-4">
+          <h3 class="text-accent font-mono text-sm tracking-tight border-b border-primary/5 pb-2">
+            {stack.category}
+          </h3>
+          <ul class="space-y-2">
+            {stack.tools.map(tool => (
+              <li class="text-secondary text-sm flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary rounded-full" aria-hidden="true"></span>
+                {tool}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

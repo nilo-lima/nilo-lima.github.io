@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description}>
+  <Navbar />
+  <main>
+    <article class="pt-32 pb-12 px-6 max-w-3xl mx-auto">
+      <a href="/blog" class="text-xs font-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest">&lt;- VOLTAR_AO_BLOG</a>
+      <header class="mt-8 space-y-4 border-b border-primary/10 pb-8">
+        <div class="flex flex-wrap items-baseline gap-3">
+          <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
+            {formatDate(post.data.pubDate)}
+          </time>
+          {post.data.updatedDate && (
+            <span class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest">
+              · atualizado {formatDate(post.data.updatedDate)}
+            </span>
+          )}
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent">{post.data.title}</h1>
+        <p class="text-secondary text-lg leading-relaxed">{post.data.description}</p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          {post.data.tags.map(tag => (
+            <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">#{tag}</span>
+          ))}
+        </div>
+        {post.data.sourceUrl && (
+          <p class="text-xs font-mono text-secondary pt-2">
+            Fonte original:
+            <a href={post.data.sourceUrl} class="text-primary hover:underline" target="_blank" rel="noopener">{post.data.sourceUrl}</a>
+          </p>
+        )}
+      </header>
+
+      <div class="prose-invert mt-10">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  .prose-invert {
+    color: #94A3B8;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-invert h2 {
+    color: #E2E8F0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .prose-invert h3 {
+    color: #E2E8F0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-invert p { margin: 1rem 0; }
+  .prose-invert a {
+    color: #38BDF8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(56, 189, 248, 0.3);
+  }
+  .prose-invert a:hover { text-decoration-color: #38BDF8; }
+  .prose-invert ul, .prose-invert ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose-invert ul { list-style: disc; }
+  .prose-invert ol { list-style: decimal; }
+  .prose-invert li { margin: 0.4rem 0; }
+  .prose-invert strong { color: #E2E8F0; }
+  .prose-invert em { color: #38BDF8; font-style: italic; }
+  .prose-invert code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: #38BDF8;
+    background: rgba(56, 189, 248, 0.08);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+  .prose-invert pre {
+    background: #0a0a0a;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+  }
+  .prose-invert pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+  .prose-invert blockquote {
+    border-left: 2px solid #38BDF8;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #E2E8F0;
+    font-style: italic;
+  }
+  .prose-invert hr {
+    border: none;
+    border-top: 1px solid rgba(56, 189, 248, 0.1);
+    margin: 2.5rem 0;
+  }
+  .prose-invert img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+  }
+</style>

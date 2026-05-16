@@ -1,0 +1,136 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	ogImage?: string;
+	lang?: 'pt-BR' | 'en';
+}
+
+const {
+	title,
+	description,
+	ogImage = "/favicon.svg",
+	lang = 'pt-BR',
+} = Astro.props;
+
+const defaultDescription = lang === 'en'
+	? "Nilo Lima Jr: IT Manager & DevOps/Cloud/AI specialist. Multi-cloud (AWS · Azure · GCP · OCI), Kubernetes, GitOps and AI applied to infrastructure."
+	: "Nilo Lima Jr: Portfólio estratégico de Gestor de TI e Especialista em DevOps, Cloud (AWS · Azure · GCP · OCI), Kubernetes e IA aplicada a infraestrutura.";
+
+const finalDescription = description ?? defaultDescription;
+
+const siteUrl = Astro.site ?? new URL("https://nilo-lima.github.io");
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const ogLocale = lang === 'en' ? 'en_US' : 'pt_BR';
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
+
+// hreflang alternates
+const ptHref = new URL('/', siteUrl).toString();
+const enHref = new URL('/en/', siteUrl).toString();
+
+// JSON-LD Person schema for rich results
+const personJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Nilo Lima Jr",
+	url: siteUrl.toString(),
+	jobTitle: lang === 'en' ? "IT Manager & DevOps/Cloud/AI Specialist" : "Gestor de TI & Especialista DevOps/Cloud/IA",
+	description: defaultDescription,
+	sameAs: [
+		"https://www.linkedin.com/in/nilolima/",
+		"https://github.com/nilo-lima",
+		"https://www.credly.com/users/nilo-lima-jr/badges",
+	],
+	knowsAbout: [
+		"DevOps", "Cloud Computing", "AWS", "Azure", "Google Cloud", "Oracle Cloud",
+		"Terraform", "Kubernetes", "Docker", "GitOps", "CI/CD", "Linux",
+		"Infrastructure as Code", "Site Reliability Engineering",
+		"Artificial Intelligence", "LLM Ops"
+	],
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Canoas",
+		addressRegion: "RS",
+		addressCountry: "BR"
+	}
+};
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={finalDescription} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Nilo Lima Jr" />
+		<meta name="theme-color" content="#050505" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" hreflang="pt-BR" href={ptHref} />
+		<link rel="alternate" hreflang="en" href={enHref} />
+		<link rel="alternate" hreflang="x-default" href={ptHref} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={finalDescription} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:locale" content={ogLocale} />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={finalDescription} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<!-- JSON-LD Person -->
+		<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-background text-accent font-sans selection:bg-primary/30 selection:text-primary">
+		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-primary focus:text-background focus:px-3 focus:py-2 focus:font-mono focus:text-xs">
+			{lang === 'en' ? 'Skip to content' : 'Pular para o conteúdo'}
+		</a>
+		<div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.03)_0,transparent_50%)]"></div>
+		<slot />
+		<style is:global>
+			:root {
+				color-scheme: dark;
+			}
+			body {
+				scrollbar-width: thin;
+				scrollbar-color: #38bdf8 #050505;
+			}
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: #050505;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #38bdf8;
+				border-radius: 10px;
+			}
+			/* WCAG 2.3.3: respeita preferência de movimento reduzido */
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto !important;
+				}
+				*, *::before, *::after {
+					animation-duration: 0.001ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.001ms !important;
+					scroll-behavior: auto !important;
+				}
+			}
+			/* Foco visível para usuários de teclado (WCAG 2.4.7) */
+			:focus-visible {
+				outline: 2px solid #38BDF8;
+				outline-offset: 3px;
+			}
+		</style>
+	</body>
+</html>

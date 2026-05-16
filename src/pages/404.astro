@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+<Layout title="404 · Rota não encontrada · Nilo Lima Jr" description="Página não encontrada no portfólio de Nilo Lima Jr.">
+  <Navbar />
+  <main class="min-h-[80vh] flex items-center px-6">
+    <section class="max-w-5xl mx-auto w-full pt-32 pb-16">
+      <div class="space-y-8">
+        <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">ERR: ROUTE_NOT_FOUND</p>
+        <pre class="font-mono text-primary/60 text-xs md:text-sm leading-tight overflow-x-auto select-none" aria-hidden="true">
+$ curl -I {Astro.url.pathname}
+HTTP/1.1 404 Not Found
+content-type: text/html; charset=utf-8
+hint: a rota solicitada não existe neste portfolio.
+        </pre>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tighter text-accent">
+          404: <span class="text-primary italic">rota não encontrada</span>
+        </h1>
+        <p class="text-secondary text-lg max-w-2xl leading-relaxed">
+          A página que você procurou não está aqui. Pode ter sido movida ou nunca ter existido. Reposicione o cursor com os atalhos abaixo.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="/" class="text-sm font-mono text-primary border border-primary/40 hover:border-primary px-4 py-2 transition-colors">
+            &lt;- VOLTAR_AO_INICIO
+          </a>
+          <a href="/blog" class="text-sm font-mono text-secondary border border-primary/10 hover:border-primary/40 hover:text-primary px-4 py-2 transition-colors">
+            EXPLORAR_BLOG
+          </a>
+          <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="text-sm font-mono text-secondary border border-primary/10 hover:border-primary/40 hover:text-primary px-4 py-2 transition-colors">
+            ABRIR_GITHUB
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

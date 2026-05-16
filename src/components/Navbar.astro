@@ -1,0 +1,72 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt-BR' } = Astro.props;
+const s = t(lang);
+
+const navItems = [
+  { name: s.nav.home, href: s.nav.homeHref },
+  { name: s.nav.about, href: s.nav.aboutHref },
+  { name: s.nav.skills, href: s.nav.skillsHref },
+  { name: s.nav.certs, href: s.nav.certsHref },
+  { name: s.nav.projects, href: s.nav.projectsHref },
+  { name: s.nav.experience, href: s.nav.experienceHref },
+  { name: s.nav.blog, href: s.nav.blogHref },
+  { name: s.nav.contact, href: s.nav.contactHref },
+];
+---
+<nav class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-primary/5">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href={lang === 'en' ? '/en/' : '/'} class="text-primary font-mono text-sm font-bold tracking-tighter flex items-center gap-2" aria-label={lang === 'en' ? 'Go to home' : 'Ir para a página inicial'}>
+      <span aria-hidden="true">♾️</span> NILO_LIMA_JR
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      {navItems.map(item => (
+        <a href={item.href} class="text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors font-medium">
+          {item.name}
+        </a>
+      ))}
+      <a
+        href={s.nav.altLangHref}
+        class="text-xs font-mono text-primary border border-primary/30 hover:border-primary px-2 py-1 transition-colors"
+        aria-label={s.nav.switchToLabel}
+        hreflang={lang === 'en' ? 'pt-BR' : 'en'}
+      >
+        {s.nav.switchTo}
+      </a>
+    </div>
+    <button id="mobile-menu-btn" type="button" aria-label={s.nav.menuOpen} aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-primary font-mono text-xs px-2 py-1 border border-primary/20 hover:border-primary/60 transition-colors">
+      {s.nav.menu}
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-primary/10 bg-background/95 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-4">
+      {navItems.map(item => (
+        <a href={item.href} class="text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors font-medium">
+          {item.name}
+        </a>
+      ))}
+      <a href={s.nav.altLangHref} class="text-xs font-mono text-primary border border-primary/30 px-2 py-1 self-start" hreflang={lang === 'en' ? 'pt-BR' : 'en'}>
+        {s.nav.switchTo}
+      </a>
+    </div>
+  </div>
+</nav>
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>

@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+const sourceLabel: Record<string, string> = {
+  artigo: 'ARTIGO',
+  github: 'GITHUB',
+  linkedin: 'LINKEDIN',
+};
+---
+<Layout title="Blog · Nilo Lima Jr" description="Notas sobre projetos do GitHub, artigos do LinkedIn e ensaios técnicos em Cloud, DevOps e IA aplicada a infraestrutura.">
+  <Navbar />
+  <main>
+    <section class="pt-32 pb-12 px-6 max-w-5xl mx-auto">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: BLOG_INDEX</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4 max-w-3xl">
+        Notas de <span class="text-primary italic">infraestrutura, plataforma & IA</span>
+      </h1>
+      <p class="text-secondary text-lg max-w-2xl pt-4 leading-relaxed">
+        Posts curtos sobre projetos publicados no GitHub, matérias e ensaios técnicos. Mais sinal, menos algoritmo.
+      </p>
+    </section>
+
+    <section class="py-16 px-6 max-w-5xl mx-auto border-t border-primary/10">
+      {posts.length === 0 ? (
+        <p class="text-secondary text-lg">Ainda não há posts publicados. Volte em breve.</p>
+      ) : (
+        <ul class="space-y-12">
+          {posts.map(post => (
+            <li>
+              <article class="group">
+                <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                  <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  <span class="text-[10px] font-mono border border-primary/20 px-2 py-0.5 text-primary/70 uppercase tracking-widest">
+                    {sourceLabel[post.data.source] ?? post.data.source}
+                  </span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-accent group-hover:text-primary transition-colors">
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h2>
+                <p class="text-secondary text-lg mt-3 leading-relaxed max-w-3xl">
+                  {post.data.description}
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {post.data.tags.map(tag => (
+                    <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">#{tag}</span>
+                  ))}
+                </div>
+                <a href={`/blog/${post.slug}/`} class="inline-flex items-center gap-2 mt-5 text-sm font-mono text-primary hover:translate-x-1 transition-transform">
+                  LER_POST -&gt;
+                </a>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  </main>
+</Layout>

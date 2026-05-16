@@ -1,0 +1,22 @@
+{
+  "name": "nilo-lima-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=18.17.1"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^4.16.18",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.7.3"
+  }
+}

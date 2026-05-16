@@ -1,0 +1,22 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt-BR' } = Astro.props;
+const s = t(lang).hero;
+---
+<section class="pt-32 pb-12 px-6 max-w-5xl mx-auto">
+  <div class="space-y-4">
+    <p class="font-mono text-primary text-sm tracking-widest animate-pulse" aria-hidden="true">{s.init}</p>
+    <h1 class="sr-only">{s.h1}</h1>
+    <h2 class="text-xl md:text-3xl text-secondary font-semibold tracking-tight max-w-4xl leading-snug">
+      {s.title} <span class="text-primary">{s.titleHighlight}</span>
+    </h2>
+    <p class="text-secondary max-w-2xl text-lg leading-relaxed pt-4">
+      {s.lead}
+    </p>
+  </div>
+</section>

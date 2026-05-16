@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import TechStack from '../../components/TechStack.astro';
+import CloudWall from '../../components/CloudWall.astro';
+import Projects from '../../components/Projects.astro';
+import Experience from '../../components/Experience.astro';
+import Contact from '../../components/Contact.astro';
+
+const lang = 'en' as const;
+---
+
+<Layout title="Nilo Lima Jr | IT Manager · DevOps · Cloud · AI" lang={lang}>
+	<Navbar lang={lang} />
+	<main id="main">
+		<Hero lang={lang} />
+		<About lang={lang} />
+		<TechStack lang={lang} />
+		<CloudWall lang={lang} />
+		<Projects lang={lang} />
+		<Experience lang={lang} />
+		<Contact lang={lang} />
+	</main>
+</Layout>

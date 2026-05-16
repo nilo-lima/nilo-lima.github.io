@@ -1,0 +1,43 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt-BR' } = Astro.props;
+const s = t(lang).contact;
+const sectionId = lang === 'en' ? 'contact' : 'contato';
+---
+<footer id={sectionId} class="py-32 px-6 max-w-5xl mx-auto border-t border-primary/10 text-left">
+  <div class="space-y-8">
+    <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase">{s.tag}</h2>
+    <h3 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent max-w-3xl">
+      {s.titlePre} <span class="text-primary italic">{s.titleHighlight}</span>
+    </h3>
+    <p class="text-secondary text-lg max-w-2xl">
+      {s.lead}
+    </p>
+    <div class="flex flex-wrap justify-start gap-8 pt-12">
+      <a href="https://www.linkedin.com/in/nilolima/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2">
+        <span class="text-xs font-mono text-secondary group-hover:text-primary transition-colors">LINKEDIN</span>
+        <span class="w-12 h-px bg-secondary/20 group-hover:bg-primary transition-all group-hover:w-20"></span>
+      </a>
+      <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2">
+        <span class="text-xs font-mono text-secondary group-hover:text-primary transition-colors">GITHUB</span>
+        <span class="w-12 h-px bg-secondary/20 group-hover:bg-primary transition-all group-hover:w-20"></span>
+      </a>
+      <a href="https://www.credly.com/users/nilo-lima-jr/badges" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-2">
+        <span class="text-xs font-mono text-secondary group-hover:text-primary transition-colors">CREDLY</span>
+        <span class="w-12 h-px bg-secondary/20 group-hover:bg-primary transition-all group-hover:w-20"></span>
+      </a>
+      <a href="mailto:nilo.lima@gmail.com" class="group flex flex-col items-center gap-2">
+        <span class="text-xs font-mono text-secondary group-hover:text-primary transition-colors">EMAIL</span>
+        <span class="w-12 h-px bg-secondary/20 group-hover:bg-primary transition-all group-hover:w-20"></span>
+      </a>
+    </div>
+    <div class="pt-32 text-[10px] font-mono text-secondary opacity-30">
+      &copy; {new Date().getFullYear()} NILO LIMA JR // {s.copyright}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,30 @@
+---
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt-BR' } = Astro.props;
+const s = t(lang).about;
+const projectsAnchor = lang === 'en' ? '/en/#projects' : '/#projetos';
+const sectionId = lang === 'en' ? 'about' : 'sobre';
+---
+<section id={sectionId} class="py-16 px-6 max-w-5xl mx-auto border-t border-primary/10">
+  <div class="grid md:grid-cols-[1fr_2fr] gap-12">
+    <div>
+      <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase">{s.tag}</h2>
+    </div>
+    <div class="space-y-6 text-secondary text-lg leading-relaxed">
+      <p>
+        {s.p1Pre}<strong class="text-accent">{s.p1Strong1}</strong>{s.p1Mid}<strong class="text-accent">{s.p1Strong2}</strong>{s.p1Pos}
+      </p>
+      <p>
+        {s.p2}
+      </p>
+      <p>
+        {s.p3Pre}<a href={projectsAnchor} class="text-primary hover:underline">{s.p3LinkLabel}</a>{s.p3Pos}
+      </p>
+    </div>
+  </div>
+</section>
