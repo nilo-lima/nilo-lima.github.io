@@ -11,10 +11,7 @@ Código-fonte do meu portfólio pessoal. Site estático gerado com **Astro**, es
 Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#050505 · #38BDF8 · #94A3B8`. Bilíngue PT-BR / EN com i18n manual via `src/i18n/ui.ts`.
 
 <p align="left">
-  <a href="https://nilo-lima.github.io" target="_blank">
-    <img src="https://img.shields.io/badge/Site-nilo--lima.github.io-38BDF8?style=for-the-badge&logo=astro&logoColor=white" alt="Site">
-  </a>
-  <a href="https://github.com/nilo-lima/portifolio_github" target="_blank">
+  <a href="https://github.com/nilo-lima/nilo-lima.github.io" target="_blank">
     <img src="https://img.shields.io/badge/Repositório-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://linkedin.com/in/nilolima" target="_blank">
