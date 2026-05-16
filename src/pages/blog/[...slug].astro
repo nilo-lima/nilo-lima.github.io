@@ -23,7 +23,7 @@ const formatDate = (d: Date) =>
 ---
 <Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description}>
   <Navbar />
-  <main>
+  <main id="main">
     <article class="pt-32 pb-12 px-6 max-w-3xl mx-auto">
       <a href="/blog" class="text-xs font-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest">&lt;- VOLTAR_AO_BLOG</a>
       <header class="mt-8 space-y-4 border-b border-primary/10 pb-8">
@@ -47,7 +47,7 @@ const formatDate = (d: Date) =>
         {post.data.sourceUrl && (
           <p class="text-xs font-mono text-secondary pt-2">
             Fonte original:
-            <a href={post.data.sourceUrl} class="text-primary hover:underline" target="_blank" rel="noopener">{post.data.sourceUrl}</a>
+            <a href={post.data.sourceUrl} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{post.data.sourceUrl}</a>
           </p>
         )}
       </header>
