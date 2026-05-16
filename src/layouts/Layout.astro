@@ -1,4 +1,10 @@
 ---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -9,7 +15,7 @@ interface Props {
 const {
 	title,
 	description,
-	ogImage = "/favicon.svg",
+	ogImage = "/og.png",
 	lang = 'pt-BR',
 } = Astro.props;
 
@@ -78,17 +84,19 @@ const personJsonLd = {
 		<meta property="og:description" content={finalDescription} />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:site_name" content="Nilo Lima Jr" />
 		<meta property="og:locale" content={ogLocale} />
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={finalDescription} />
 		<meta name="twitter:image" content={ogImageUrl} />
+		<meta name="twitter:image:alt" content="Nilo Lima Jr — Gestor de TI & Especialista DevOps · Cloud · IA" />
 		<!-- JSON-LD Person -->
 		<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-background text-accent font-sans selection:bg-primary/30 selection:text-primary">
 		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-primary focus:text-background focus:px-3 focus:py-2 focus:font-mono focus:text-xs">
