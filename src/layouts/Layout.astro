@@ -105,6 +105,13 @@ const personJsonLd = {
 		</a>
 		<div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.03)_0,transparent_50%)]"></div>
 		<slot />
+		<button
+			id="back-to-top"
+			aria-label="Voltar ao topo"
+			class="fixed bottom-6 right-6 z-50 w-9 h-9 border border-primary/30 bg-background/90 backdrop-blur text-primary font-mono text-xs hover:border-primary transition-all opacity-0 pointer-events-none flex items-center justify-center"
+		>
+			↑
+		</button>
 		<style is:global>
 			:root {
 				color-scheme: dark;
@@ -141,5 +148,16 @@ const personJsonLd = {
 				outline-offset: 3px;
 			}
 		</style>
+		<script>
+			const btn = document.getElementById('back-to-top');
+			if (btn) {
+				window.addEventListener('scroll', () => {
+					const visible = window.scrollY > 400;
+					btn.style.opacity = visible ? '1' : '0';
+					btn.style.pointerEvents = visible ? 'auto' : 'none';
+				}, { passive: true });
+				btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			}
+		</script>
 	</body>
 </html>
