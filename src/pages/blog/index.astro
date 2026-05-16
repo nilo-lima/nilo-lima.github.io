@@ -18,6 +18,8 @@ const sourceLabel: Record<string, string> = {
   github: 'GITHUB',
   linkedin: 'LINKEDIN',
 };
+
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 ---
 <Layout title="Blog · Nilo Lima Jr" description="Notas sobre projetos do GitHub, artigos do LinkedIn e ensaios técnicos em Cloud, DevOps e IA aplicada a infraestrutura.">
   <Navbar />
@@ -37,12 +39,36 @@ const sourceLabel: Record<string, string> = {
     </section>
 
     <section class="py-16 px-6 max-w-5xl mx-auto border-t border-primary/10">
+
+      <!-- Filtro por tag -->
+      <div class="flex flex-wrap gap-2 mb-12" id="tag-filters" role="group" aria-label="Filtrar por tag">
+        <button
+          data-tag="*"
+          class="tag-btn text-[10px] font-mono border px-3 py-1 transition-colors border-primary/40 text-primary bg-primary/10"
+          aria-pressed="true"
+        >
+          TODOS
+        </button>
+        {allTags.map(tag => (
+          <button
+            data-tag={tag}
+            class="tag-btn text-[10px] font-mono border px-3 py-1 transition-colors border-primary/20 text-secondary hover:text-primary hover:border-primary/40"
+            aria-pressed="false"
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
       {posts.length === 0 ? (
         <p class="text-secondary text-lg">Ainda não há posts publicados. Volte em breve.</p>
       ) : (
-        <ul class="space-y-12">
+        <ul class="space-y-12" id="posts-list">
           {posts.map(post => (
-            <li>
+            <li
+              class="post-item"
+              data-tags={post.data.tags.map(t => t.toLowerCase()).join(' ')}
+            >
               <article class="group">
                 <div class="flex flex-wrap items-baseline gap-3 mb-2">
                   <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
@@ -77,3 +103,29 @@ const sourceLabel: Record<string, string> = {
     </section>
   </main>
 </Layout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
+  const items = document.querySelectorAll<HTMLElement>('.post-item');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.tag ?? '*';
+
+      btns.forEach(b => {
+        b.classList.remove('border-primary/40', 'text-primary', 'bg-primary/10');
+        b.classList.add('border-primary/20', 'text-secondary');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('border-primary/40', 'text-primary', 'bg-primary/10');
+      btn.classList.remove('border-primary/20', 'text-secondary');
+      btn.setAttribute('aria-pressed', 'true');
+
+      items.forEach(item => {
+        const tags = item.dataset.tags ?? '';
+        const visible = selected === '*' || tags.split(' ').includes(selected.toLowerCase());
+        item.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>
