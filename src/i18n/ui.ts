@@ -105,6 +105,13 @@ export const ui = {
       titleHighlight: 'eficiência tecnológica?',
       lead: 'Vamos conversar sobre liderança técnica, gestão de TI e como escalar times e infraestruturas com eficiência. Aberto a novas conexões e parcerias.',
       copyright: 'BUILT_WITH_ASTRO',
+      cvLabel: 'CURRÍCULOS',
+      cvItems: [
+        { label: 'GESTÃO', file: '/curriculo-gestao.pdf' },
+        { label: 'INFRA', file: '/curriculo-infra.pdf' },
+        { label: 'SISTEMAS', file: '/curriculo-sistemas.pdf' },
+        { label: 'DEVOPS_CLOUD', file: '/curriculo-devops-cloud.pdf' },
+      ],
     },
   },
   en: {
@@ -210,6 +217,13 @@ export const ui = {
       titleHighlight: 'technological efficiency?',
       lead: "Let's talk about technical leadership, IT management and how to scale teams and infrastructures with efficiency. Open to new connections and partnerships.",
       copyright: 'BUILT_WITH_ASTRO',
+      cvLabel: 'RÉSUMÉS',
+      cvItems: [
+        { label: 'MANAGEMENT', file: '/curriculo-gestao.pdf' },
+        { label: 'INFRA', file: '/curriculo-infra.pdf' },
+        { label: 'SYSTEMS', file: '/curriculo-sistemas.pdf' },
+        { label: 'DEVOPS_CLOUD', file: '/curriculo-devops-cloud.pdf' },
+      ],
     },
   },
 } as const;

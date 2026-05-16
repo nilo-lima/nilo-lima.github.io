@@ -36,6 +36,21 @@ const sectionId = lang === 'en' ? 'contact' : 'contato';
         <span class="w-12 h-px bg-secondary/20 group-hover:bg-primary transition-all group-hover:w-20"></span>
       </a>
     </div>
+    <div class="pt-12 border-t border-primary/10">
+      <p class="text-[10px] font-mono text-primary/50 uppercase tracking-[0.2em] mb-4">{s.cvLabel}</p>
+      <div class="flex flex-wrap gap-3">
+        {s.cvItems.map(cv => (
+          <a
+            href={cv.file}
+            download
+            class="text-[10px] font-mono border border-primary/20 px-4 py-2 text-secondary hover:text-primary hover:border-primary/50 transition-colors flex items-center gap-2"
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.84v4h5.66V9h3.84L12 2z"/></svg>
+            {cv.label}
+          </a>
+        ))}
+      </div>
+    </div>
     <div class="pt-32 text-[10px] font-mono text-secondary opacity-30">
       &copy; {new Date().getFullYear()} NILO LIMA JR // {s.copyright}
     </div>
