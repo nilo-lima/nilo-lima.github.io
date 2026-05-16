@@ -20,6 +20,9 @@ const { Content } = await post.render();
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+const wordCount = post.body.trim().split(/\s+/).length;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
 ---
 <Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description}>
   <Navbar />
@@ -31,6 +34,9 @@ const formatDate = (d: Date) =>
           <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
             {formatDate(post.data.pubDate)}
           </time>
+          <span class="text-[10px] font-mono text-primary/50 uppercase tracking-widest">
+            · {readingTime} min de leitura
+          </span>
           {post.data.updatedDate && (
             <span class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest">
               · atualizado {formatDate(post.data.updatedDate)}
