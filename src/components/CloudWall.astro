@@ -42,12 +42,12 @@ const certs: { name: string; issuer: string; year: string }[] = [
       ) : (
         <>
           {certs.map(cert => (
-            <div class="p-6 bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all group">
-              <div class="flex justify-between items-start mb-4">
+            <div class="p-4 bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all group h-24 flex flex-col justify-between overflow-hidden">
+              <div class="flex justify-between items-start">
                 <span class="text-[10px] font-mono text-primary opacity-60 uppercase">{cert.issuer}</span>
                 <span class="text-[10px] font-mono text-secondary">{cert.year}</span>
               </div>
-              <h3 class="text-accent font-semibold group-hover:text-primary transition-colors">
+              <h3 class="text-sm text-accent font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-2">
                 {cert.name}
               </h3>
             </div>
