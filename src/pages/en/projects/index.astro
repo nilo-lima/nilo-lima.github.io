@@ -1,0 +1,130 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'en' as const;
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => {
+    if (a.data.pinned && !b.data.pinned) return -1;
+    if (!a.data.pinned && b.data.pinned) return 1;
+    if (a.data.pinned && b.data.pinned) return a.data.order - b.data.order;
+    return a.data.title.localeCompare(b.data.title, 'en');
+  });
+
+const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
+---
+<Layout
+  title="Projects · Nilo Lima Jr"
+  description="Public repositories focused on reproducible infrastructure, automation and AI applied to operations."
+  lang={lang}
+>
+  <Navbar lang={lang} />
+  <main id="main">
+
+    <section class="pt-32 pb-12 px-6 max-w-5xl mx-auto">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: PROJECTS_INDEX</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4 max-w-3xl">
+        Projects in <span class="text-primary italic">infrastructure, platform & automation</span>
+      </h1>
+      <p class="text-secondary text-lg max-w-2xl pt-4 leading-relaxed">
+        Public repositories focused on reproducibility, IaC, CI/CD and AI applied to operations. Featured projects are highlighted.
+      </p>
+    </section>
+
+    <section class="py-8 px-6 max-w-5xl mx-auto border-t border-primary/10">
+
+      <!-- Tag filter -->
+      <div class="flex flex-wrap gap-2 mb-10" id="tag-filters" role="group" aria-label="Filter by technology">
+        <button
+          data-tag="*"
+          class="tag-btn text-[10px] font-mono border px-3 py-1 transition-colors border-primary/40 text-primary bg-primary/10"
+          aria-pressed="true"
+        >
+          ALL
+        </button>
+        {allTags.map(tag => (
+          <button
+            data-tag={tag}
+            class="tag-btn text-[10px] font-mono border px-3 py-1 transition-colors border-primary/20 text-secondary hover:text-primary hover:border-primary/40"
+            aria-pressed="false"
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <!-- Projects grid -->
+      <div class="grid sm:grid-cols-2 gap-6" id="projects-grid">
+        {projects.map(project => (
+          <div
+            class="project-card group p-6 border border-primary/10 hover:border-primary/30 transition-all flex flex-col gap-4 bg-primary/[0.02]"
+            data-tags={project.data.tags.map(t => t.toLowerCase()).join(' ')}
+          >
+            <div class="flex items-start justify-between gap-2">
+              <h2 class="text-base font-bold text-accent group-hover:text-primary transition-colors leading-snug">
+                {project.data.title}
+              </h2>
+              {project.data.pinned && (
+                <span class="text-[9px] font-mono text-primary border border-primary/40 px-2 py-0.5 shrink-0 mt-0.5">
+                  ★ FEATURED
+                </span>
+              )}
+            </div>
+            <p class="text-secondary text-sm leading-relaxed flex-1">
+              {project.data.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {project.data.tags.map(tag => (
+                <span class="text-[10px] font-mono border border-primary/15 px-2 py-0.5 text-primary/60 uppercase tracking-wider">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+            <a
+              href={project.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-mono text-primary inline-flex items-center gap-1 hover:translate-x-1 transition-transform mt-auto"
+            >
+              OPEN_REPOSITORY -&gt;
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Footer -->
+      <div class="pt-12 border-t border-primary/5 text-sm font-mono text-secondary">
+        All repositories at <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">github.com/nilo-lima</a>.
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.project-card');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.tag ?? '*';
+
+      btns.forEach(b => {
+        b.classList.remove('border-primary/40', 'text-primary', 'bg-primary/10');
+        b.classList.add('border-primary/20', 'text-secondary');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('border-primary/40', 'text-primary', 'bg-primary/10');
+      btn.classList.remove('border-primary/20', 'text-secondary');
+      btn.setAttribute('aria-pressed', 'true');
+
+      cards.forEach(card => {
+        const tags = card.dataset.tags ?? '';
+        const visible = selected === '*' || tags.split(' ').includes(selected.toLowerCase());
+        (card as HTMLElement).style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>

@@ -125,7 +125,7 @@ export const ui = {
       aboutHref: '/en/#about',
       skillsHref: '/en/#skills',
       certsHref: '/en/#certifications',
-      projectsHref: '/en/#projects',
+      projectsHref: '/en/projects/',
       experienceHref: '/en/#experience',
       blogHref: '/blog',
       contactHref: '/en/#contact',

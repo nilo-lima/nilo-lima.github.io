@@ -49,7 +49,7 @@ const pinned = (await getCollection('projects', ({ data }) => data.pinned))
       ))}
       <div class="pt-4 border-t border-primary/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm font-mono">
         <a
-          href="/projetos"
+          href={lang === 'en' ? '/en/projects/' : '/projetos'}
           class="text-primary border border-primary/30 hover:border-primary px-4 py-2 transition-colors self-start"
         >
           {s.viewAll} -&gt;
