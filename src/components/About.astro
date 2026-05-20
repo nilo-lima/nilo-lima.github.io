@@ -16,12 +16,7 @@ const sectionId = lang === 'en' ? 'about' : 'sobre';
       <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase">{s.tag}</h2>
     </div>
     <div class="space-y-6 text-secondary text-lg leading-relaxed">
-      <p>
-        {s.p1Pre}<strong class="text-accent">{s.p1Strong1}</strong>{s.p1Mid}<strong class="text-accent">{s.p1Strong2}</strong>{s.p1Pos}
-      </p>
-      <p>
-        {s.p2}
-      </p>
+      {s.paragraphs.map(p => <p>{p}</p>)}
       <p>
         {s.p3Pre}<a href={projectsAnchor} class="text-primary hover:underline">{s.p3LinkLabel}</a>{s.p3Pos}
       </p>
