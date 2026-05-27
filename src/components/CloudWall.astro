@@ -8,6 +8,7 @@ interface Props {
 const { lang = 'pt-BR' } = Astro.props;
 const s = t(lang).certs;
 const sectionId = lang === 'en' ? 'certifications' : 'certificacoes';
+const MS_LEARN_PROFILE = 'https://learn.microsoft.com/pt-br/users/nilolima-9821/';
 
 // Preencha aqui as certificações que quer destacar.
 // Formato: { name, issuer, year }
@@ -56,6 +57,13 @@ const certs: { name: string; issuer: string; year: string }[] = [
             <p class="text-secondary text-sm font-mono tracking-tighter">
               {s.verifiable} <a href="https://www.credly.com/users/nilo-lima-jr/badges" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Credly</a>.
             </p>
+          </div>
+          <div class="sm:col-span-2 lg:col-span-3 p-4 border border-dashed border-primary/20 flex flex-wrap items-center justify-between gap-4">
+            <p class="text-secondary text-xs font-mono">{s.msLearnDesc}</p>
+            <a href={MS_LEARN_PROFILE} target="_blank" rel="noopener noreferrer"
+               class="text-primary text-xs font-mono hover:underline whitespace-nowrap">
+              {s.msLearnCta} ↗
+            </a>
           </div>
         </>
       )}

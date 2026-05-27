@@ -65,6 +65,8 @@ export const ui = {
       lead: 'Trilha contínua em Cloud, DevOps, Cibersegurança, ISO/IEC e gestão. Conjunto completo no Credly.',
       empty: 'Lista curada em construção. Conquistas completas e verificáveis em',
       verifiable: 'Conjunto completo e verificável no',
+      msLearnDesc: 'Módulos concluídos, trilhas de aprendizagem e troféus Microsoft Learn.',
+      msLearnCta: 'Ver perfil Microsoft Learn',
     },
     projects: {
       tag: '04 // Projetos',
@@ -175,6 +177,8 @@ export const ui = {
       lead: 'Continuous track in Cloud, DevOps, Cybersecurity, ISO/IEC and management. Full set on Credly.',
       empty: 'Curated list under construction. Full and verifiable achievements at',
       verifiable: 'Full and verifiable set on',
+      msLearnDesc: 'Completed modules, learning paths and Microsoft Learn trophies.',
+      msLearnCta: 'View Microsoft Learn profile',
     },
     projects: {
       tag: '04 // Projects',
