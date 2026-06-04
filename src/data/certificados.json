@@ -1,0 +1,844 @@
+[
+  {
+    "folder": "Academia Forense Digital",
+    "label": "Academia Forense Digital",
+    "files": [
+      {
+        "id": "1Yey7Lqy8v6f6eMW0C6vpUVKEyriDPx4U",
+        "name": "AFD Auditoria de TI na Prática"
+      },
+      {
+        "id": "17AoqfUujuh2Ar-k2uuNSmxFClwtQQsDz",
+        "name": "AFD Autopsy Forensics do Zero ao Avançado"
+      },
+      {
+        "id": "1mWo-0x6v7WijfxLMIPO8rXF2hgBJTfYP",
+        "name": "AFD Forense em Internet e OSSINT"
+      },
+      {
+        "id": "1uq0vzdzM3UMC4Cby1TV3VHbiXF8wmmA2",
+        "name": "AFD forense-em-redes-de-computadores"
+      },
+      {
+        "id": "1UauIP7TWQyQzSZl6e11lDgGMP28AH7cU",
+        "name": "AFD Investigação de Ataques Ransoware"
+      },
+      {
+        "id": "1lajP8I_nA-_2luKwiefrzjoGhPIBgpqc",
+        "name": "AFD Investigação de Fake News - 09062022"
+      },
+      {
+        "id": "1iqPRnjs5zVzkDJcfhTNnUGQy4yXVjVdh",
+        "name": "AFD Recuperação de Dados Starter"
+      },
+      {
+        "id": "15xF2p_UoMzkbYJPqpY-EXXDzTeEo08B0",
+        "name": "AFD Resposta a Incidentes"
+      },
+      {
+        "id": "11Nboc9E2OCoiXKGrPYNML58iVZWobPtD",
+        "name": "AFD Summit_2022"
+      },
+      {
+        "id": "1Yao0pUnaNkhMEzDThCsbDNGO4M2La3_K",
+        "name": "Autopsy Forense - AFD"
+      },
+      {
+        "id": "10g5RRdyyQX6e03oHTwenDW15hSXEYb8c",
+        "name": "Computaçao Forense - Academia Forense Digital"
+      },
+      {
+        "id": "1i7lV7kL5HN8lQ7uEzdhcxHfCQs87x8M7",
+        "name": "Cyber Security Essentials"
+      },
+      {
+        "id": "13HEeGX1lNqdY2Vs_4oDU_JY4jD5nO4eF",
+        "name": "Forense em Memória - Academia Forense Digital"
+      },
+      {
+        "id": "1VY4AZLY7ZLi2HM9LcUK28kLdk_5R3iqM",
+        "name": "Volatility 3 para Análise de Memória"
+      }
+    ]
+  },
+  {
+    "folder": "BootCamps_XPe",
+    "label": "Bootcamps XP Educação",
+    "files": [
+      {
+        "id": "1lwKAJMPD0FeA7M4dMPwkNJh2EMa_8QRz",
+        "name": "BC_Analista_Banco_de_Dados"
+      },
+      {
+        "id": "10YrbkvohYlUc8yJ1QP9w-cBlH-Me79Fu",
+        "name": "BC_Analista_de_Ataque_Cibernetico"
+      },
+      {
+        "id": "1q_4p8FIgvDkETGctnQljBaRIL2C1WgW2",
+        "name": "BC_Analista_de_Dados"
+      },
+      {
+        "id": "1F06VV0oF8Z7vFKbYHp33jAQYruGFcCMe",
+        "name": "BC_Analista_Defesa_Cibernetica"
+      },
+      {
+        "id": "1lWNQspFSLnYS_dT6knBjZiNm1TR9Y4YU",
+        "name": "BC_Arquiteto_Solucoes"
+      },
+      {
+        "id": "1Y6qXe7sHUJNuhIKig_ZmjgcV1gF639qG",
+        "name": "BC_Desenvolvedor NodeJs"
+      },
+      {
+        "id": "1UfK2GYWmwDoLlcgpg7oSDpXLdnzL3Qr_",
+        "name": "BC_Desenvolvedor_Business_Intelligence"
+      },
+      {
+        "id": "1NQTvyZkyLQ-_Sik_eWp-3uMO3-pCCPAJ",
+        "name": "BC_DevOps"
+      },
+      {
+        "id": "168RZdiWX8kqLENFwmM_OFAVS1xQsoeV9",
+        "name": "BC_Gestor_de_Dados"
+      },
+      {
+        "id": "1YnUCdpVKzon19PA7YNOTiyjMlvU_-d2l",
+        "name": "BC_Gestor_de_TI"
+      },
+      {
+        "id": "1mxBBSPfuwSbhM9PrWW7JItfKfr41ZCak",
+        "name": "BC_Gestor_Operações_de_TI"
+      },
+      {
+        "id": "1MNC9Vhh2NVNkxLye1Cb4nDyVa6V-GZ96",
+        "name": "BC_Professional_AWS_Cloud_Computing"
+      },
+      {
+        "id": "1rtruhzfhlGVLJEMmZyIQQhmHCWxNrGel",
+        "name": "BC_Profissional_Analista_Negocios"
+      },
+      {
+        "id": "1VsZf6tnGZi01YtdWwlxIYZRW-GBe0l1x",
+        "name": "BC_Profissional_Azure_Cloud_Computing"
+      }
+    ]
+  },
+  {
+    "folder": "Cloud",
+    "label": "Cloud",
+    "files": [
+      {
+        "id": "1iq2F8L0FfvpRxkElYcqXOjPR88R8lmVb",
+        "name": "AWS na Prática"
+      },
+      {
+        "id": "1ceRXkw-3wpS0D-vVU1SOUs1AH-Cz7S9a",
+        "name": "AWS para Iniciantes - Aprenda e Domine a nuvem Amazon"
+      },
+      {
+        "id": "1jhdgIDJf00gL-m74WPjO5rhJrsjueF4k",
+        "name": "AWS TFTEC Certificado de Conclusão de Curso"
+      },
+      {
+        "id": "1AjoTIuRgrgiMgk0UY_jniyD915OOapjn",
+        "name": "Cloud Fundamentals"
+      },
+      {
+        "id": "17mz9daUP6ymMaLOjlxd6jj1Vt39MM24D",
+        "name": "Desafio MultiCloud 1 TCB"
+      },
+      {
+        "id": "1bsESqQ1R0q0N9rpvr3_lFxm8v0nvF-qF",
+        "name": "FTEC Cloud - Nilo Junior - Curso Inteligência Emocional"
+      },
+      {
+        "id": "1_6qEhhB9VhhJD71_P-tt9MozaE5vOAJe",
+        "name": "Introdução à Infraestrutura de Nuvem"
+      },
+      {
+        "id": "1La3-la7IEsXsjDyviKk-DHvrBZpXMnsR",
+        "name": "TCB AWS - 2022-07-14"
+      },
+      {
+        "id": "18HCq42WqTB7Pz9Yc5gIn2waZB86d05Rj",
+        "name": "TCB GCP - 2023-03-24"
+      },
+      {
+        "id": "1IsouGHnsy__yGm74v9B_aIg5yh_Pkv1F",
+        "name": "TCB OCI - 2022-05-19"
+      },
+      {
+        "id": "11YyFedcoSWSOLWZV7bqzx1JEnbseaZZv",
+        "name": "TFTEC Cloud - Nilo Junior - Certificação AZ-900"
+      },
+      {
+        "id": "12NtvOpjb7xzKHc2QDbab8lch1CKS2HYS",
+        "name": "TFTEC Cloud - Nilo Junior - Certificação MS-900"
+      }
+    ]
+  },
+  {
+    "folder": "Dados",
+    "label": "Dados",
+    "files": [
+      {
+        "id": "1Ie1gJIlX_soVPIdovFkS8ggDKz8ejPOH",
+        "name": "Business Intelligence(BI) – SQL Server e Pentaho"
+      },
+      {
+        "id": "1RDDZJPGJ4ok1SNNo5X3qYihMUs45IG6T",
+        "name": "Certificado DIM1000"
+      },
+      {
+        "id": "1vWekrqK0dipM4QZcp6uREROOeDvU6CEy",
+        "name": "Certificado ETL1000"
+      },
+      {
+        "id": "1NbsEBtWP_-JBgqmJkbeWoLaavEE35aIS",
+        "name": "Como Construir um DW sem pagar muito"
+      },
+      {
+        "id": "1mRkaQbisaNvj4l5h7FTYT6O4UbMahbf0",
+        "name": "Construa Projetos de Data Warehouse com Apache HOP - Parte02"
+      },
+      {
+        "id": "1X6nXrioDL5D1EDdvkBGmaK82nR25Eaja",
+        "name": "Databrics_Generative_AI_Fundamentals_17112024"
+      },
+      {
+        "id": "1SbhzoedtvmqC0ZYA3D9yL3bw4u6RPXsB",
+        "name": "Estruturando um Projeto de dados"
+      },
+      {
+        "id": "1-yq5Iv3z_CNv2H6YxqyxmAot8QXQTjBz",
+        "name": "JA_Docker_Analista_Engenheiro_Dados"
+      },
+      {
+        "id": "103Wq-6NIwrK-JsxmnWow-9C2oeUzrD6W",
+        "name": "JA_Introdução_Git_GitHub"
+      },
+      {
+        "id": "1KepYRpt6wKlOgpk3vcT8qmWC9tC70fqn",
+        "name": "Kubernetes para Dados"
+      },
+      {
+        "id": "1Z1Ez479UOkG7BZaaGMYua-Ko2c2x7yZ3",
+        "name": "Metabase de Zero ao Avançado"
+      },
+      {
+        "id": "1YyTKQ7f6FoSUbZe0nuRVFSvKoBmg07Bd",
+        "name": "Metabase do Zero da Instalação Completa ao Gráfico"
+      },
+      {
+        "id": "10nV2gVk2kW_F-2E7XzZHPjejFWe7BIrY",
+        "name": "Pentaho Data Integration - ETL Essencial"
+      },
+      {
+        "id": "1Oiz8YdCVQ_z9enzahbyrtOEq62e7Zh_3",
+        "name": "Pentaho Data Integration - PDI"
+      },
+      {
+        "id": "1Y6_n71PYarA8g2x0QBBFLMR0AA6Cq6CG",
+        "name": "Pentaho DW by Data Consultant"
+      },
+      {
+        "id": "1P7d6emA6PIfwcQvGO-K6PjZcuXP6vdE1",
+        "name": "Pipeline API com agende de IA"
+      },
+      {
+        "id": "1ZXE4atGufLb1_Pf6e-gP1onENpxLs0oP",
+        "name": "Pipeline Compeleta de Dados Python SQL e n8n"
+      },
+      {
+        "id": "1nG36XsiHyYphDloOKEuASH80q6ThKxet",
+        "name": "Streamlit - Desenvolvendo Aplicações de Dados Web"
+      },
+      {
+        "id": "1mGayX_PjvRctI4DzyyaM9OaDQeW9IF-D",
+        "name": "Workshop Construindo uma API do Zero ao Deploy FastAPI"
+      }
+    ]
+  },
+  {
+    "folder": "DSA",
+    "label": "Data Science Academy",
+    "files": [
+      {
+        "id": "15cGtqLYMV5mRPsCc7_JIaFJFlgUm51ns",
+        "name": "Fundamentos-de-data-science-e-inteligencia-artificial"
+      },
+      {
+        "id": "1mUBuUzPNrFXR2BT4emDlM0UJGFvlnBZ7",
+        "name": "Fundamentos-de-engenharia-de-dados"
+      },
+      {
+        "id": "1mzHob_jBzNg0XiHT9N-CqixgsmybwTSr",
+        "name": "Fundamentos-de-linguagem-python-para-analise-de-dados-e-data-science-nivel-intermediário"
+      },
+      {
+        "id": "1mqED7g7G5cXEpWrx0RrVZlbv4KMafJQc",
+        "name": "Fundamentos-de-linguagem-python-para-analise-de-dados-e-data-science-nível-básico"
+      },
+      {
+        "id": "1r6aye1VYGx6pTGBthSqyYI0gsCAgC5wM",
+        "name": "Fundamentos-de-linguagem-python-para-analise-de-dados-e-data-science-nível-introdutório"
+      }
+    ]
+  },
+  {
+    "folder": "DevOps",
+    "label": "DevOps",
+    "files": [
+      {
+        "id": "1_AlszRJFGW10OooMFoDFqBTGe2MKxma6",
+        "name": "Certificado - Git - Github para DevOps"
+      },
+      {
+        "id": "1ARxM4Z0QDXMuDhfTDn9xlKUtjrIXROnX",
+        "name": "Terraform do Básico ao Avançado"
+      }
+    ]
+  },
+  {
+    "folder": "Dynamics_AX",
+    "label": "Dynamics AX",
+    "files": [
+      {
+        "id": "1aBIvGy6RxjLU2bVcvFoYdvpn6EtFZlgg",
+        "name": "Certificado Professional One 2022 1º Edição - Nilo Hernandes de Lima Junior - export drawback"
+      },
+      {
+        "id": "1WAzKOypnFipqaC3MGlw3C8dgEEJY3wfG",
+        "name": "Certificado Professional One 2022 1º Edição - Nilo Hernandes de Lima Junior - import e broker"
+      },
+      {
+        "id": "1dv_bE8MsxcsAgMoS6aqwZlV-gTUJiA7u",
+        "name": "Jullho 2021 Mini Academia AX 2012"
+      },
+      {
+        "id": "14xKYou7dw8NR8D-bBIgkOHm7Pn-Hsd2d",
+        "name": "Novidades Microsoft Dynamics 365 Agosto 2017"
+      }
+    ]
+  },
+  {
+    "folder": "Escola_Virtual_Gov_Br",
+    "label": "Escola Virtual GovBR",
+    "files": [
+      {
+        "id": "1mqHzvIvFazfd9jbzdYL9AzY8aqXSljxs",
+        "name": "Analise_de_dados_como_suporte_a_tomada_de_decisao"
+      },
+      {
+        "id": "1WD-GT0OiKmbBEj4XY4EOGATF3AqmJFpw",
+        "name": "Governanca_de_dados"
+      },
+      {
+        "id": "1KMf_ntCNjEzoY7FTXVVSVOQk2kVtMEuV",
+        "name": "Introducao_a_ciencia_de_dados_conceitos_e_ferramentas"
+      }
+    ]
+  },
+  {
+    "folder": "Fundamentals_or_Essentials",
+    "label": "Fundamentos ou Essencial",
+    "files": [
+      {
+        "id": "1FBCPiVSRV8TF9m-XuKbI-Qdaby-qkBtV",
+        "name": "AZ-900 KaSolution"
+      },
+      {
+        "id": "1gNtBEc8ivtpqFShHXawsrOgl9U7Oupk7",
+        "name": "certificadoZ3RmWHFlUEVLL2RtWHJ4djlxMVV4dz09"
+      },
+      {
+        "id": "1Ir2mQ_1qaaIlhF-5c13E8sWqP-aoNFRK",
+        "name": "certificadoZWQzRGdiblgrZXAxcHQzZ0tYWEhRQT09"
+      },
+      {
+        "id": "1ELu310DHURIFiB3TIAukshfPOCJFdH3Y",
+        "name": "Certified Ransomware Protection Officer CRPO"
+      },
+      {
+        "id": "1tWEJp9_xcuJacpvbi6CmYhBGGEau8GKh",
+        "name": "Certified SME Cyber Security Officer CSCSO"
+      },
+      {
+        "id": "1z0MinPZNY85uh2deE5NDp6HXThqNKE3R",
+        "name": "CISO no Novo Cenário de Riscos"
+      },
+      {
+        "id": "16Y-mBB5393OJ4lV1jh9fdeZtXEk3jtmP",
+        "name": "Containers Fundamentals"
+      },
+      {
+        "id": "1dTXvuWALkAIeDxiqH3OprxQ-2zaoSwvv",
+        "name": "DevOps Essentilas"
+      },
+      {
+        "id": "1Y_tQFpl5jMg5GXwf7MeVtceOSdXTRwIf",
+        "name": "DevOps Foundation"
+      },
+      {
+        "id": "1w2V_msqdmU_Jwp-RF_pXGaSU_pH6Iff_",
+        "name": "FCA Fortigate 7.4 Operator Self-Paced"
+      },
+      {
+        "id": "1tcjQrALp8UANLTv8HPABnTSxu6GBxQZV",
+        "name": "FCF - Getting Started in Cybersecurity 3-0"
+      },
+      {
+        "id": "1FE8rLclIEDofH_ZOGNQB5rjJY66hQNoZ",
+        "name": "FCF - Technical Introduction to Cybersecurity 2-0"
+      },
+      {
+        "id": "13X5HEDlTNG-k1TjHlpTP4FMdIhXxxMqQ",
+        "name": "FCF_Introduction_to_the_Threat_Landscape"
+      },
+      {
+        "id": "14OAbsaxdYIpKpmZoi2CqdOIqkVIxzz_e",
+        "name": "Formação Administrador de Redes Multiplataforma"
+      },
+      {
+        "id": "1mhVT4oaZBul0RAuAo60glgyyqmbQtU4i",
+        "name": "FUNDAMENTOS DO MICROSOFT 365"
+      },
+      {
+        "id": "1u6dCt_T-rPjZS_jaxrEBUr-8_mFNSHvx",
+        "name": "Introduction_to_Linux_LFS101"
+      },
+      {
+        "id": "1cr58IE4VMhscufdR5F4zRoim0ha_FE_h",
+        "name": "Introdução à Governança da Inteligência Artificial"
+      },
+      {
+        "id": "1MgOynG23u0h88RK6HTzqrTRke16T6Gbw",
+        "name": "M40366 Network Fundamentas Microsoft"
+      },
+      {
+        "id": "15ceZyyIxNxnhvu8pJISCbpO1PrJmbF5Z",
+        "name": "Materializando a Atuação do SOC"
+      },
+      {
+        "id": "1_XrGvUpXxd4a-NZ-fLDmt1GY80vJ9G7O",
+        "name": "MAZ900 Microsoft Azure Fundamentals"
+      },
+      {
+        "id": "1aFSfkmHkLjX3-4MtfRPtMuTcgrQ5D3Tb",
+        "name": "MS030T – ADMINISTRADOR DO OFFICE 365"
+      }
+    ]
+  },
+  {
+    "folder": "Gestão",
+    "label": "Gestão",
+    "files": [
+      {
+        "id": "1OOMUp1J3tY2BrnM3lbasNeQPI4WhlA7X",
+        "name": "Carisma_Influeniar_Pessoas_Conquer"
+      },
+      {
+        "id": "1SQZ-xxvUtlvdVFd1S-rfxVfod-E_oF_3",
+        "name": "Como Estruturar um Projeto de Implementação da ISOIEC 27001"
+      },
+      {
+        "id": "12woZLy1Mjj7KAb5Fz8l2sqBNI_9LjdBT",
+        "name": "Como Gerenciar Projetos Baseados no PMI"
+      },
+      {
+        "id": "1mZCS4pa5m3dIjt418gUTKuaJLOG7-2Jf",
+        "name": "Enterprise_Chaos_Engineering_Certified"
+      },
+      {
+        "id": "13QudfD9_wFIHmJEed2su6p2t3XVj0rjS",
+        "name": "Formação em Liderança - Conquer"
+      },
+      {
+        "id": "1APt8sZmJifG47pmZ9yZu23p8fM-WjVWH",
+        "name": "Formação Executiva em Segurança da Informação com base na ISOIEC 27001"
+      },
+      {
+        "id": "1VE_MUJx4_j-5DrXXy8KFBJvdOecZiu50",
+        "name": "Imersão em Riscos da Inteligência Artificial"
+      },
+      {
+        "id": "14HVMXiRVBhYf303yT9cq5xHIUxjMImqv",
+        "name": "Implantação de Governança de Dados para Inteligência Artificial"
+      },
+      {
+        "id": "1m8uGlB9UmSQlKmmICIJA5YUuk-D6H_wJ",
+        "name": "Leis de Proteção de Dados Comparativo Global"
+      },
+      {
+        "id": "1fVy4pdFQb8mgKYDB9IEn1ndrbcp9WzFL",
+        "name": "Mapeamento de Processos para criação de procedimentos operacionais"
+      },
+      {
+        "id": "1iTOXKCEiQ9z9Ye2fNcIBt-PkOSObfiGf",
+        "name": "Planejamento Estratégico Set 2018"
+      },
+      {
+        "id": "1-dsRE28FOf_Wa9AL-J3m0Ko7ZYxKqbcZ",
+        "name": "Práticas de Inteligência Artificial Ética"
+      },
+      {
+        "id": "1VB8vQJ0ljjpHbb1ypBUyKp2bwYoZmRRv",
+        "name": "Tudo que um Gestor de Suporte Técnico deveria saber Abril 2016"
+      }
+    ]
+  },
+  {
+    "folder": "GPT_AI",
+    "label": "IA",
+    "files": [
+      {
+        "id": "1UQ5_L-oBTF8MhJM9t3vEzPwv_q7uXGfM",
+        "name": "Artificial Intelligence"
+      },
+      {
+        "id": "1mS1-khhpi0TrkMSH_9E7CtOa94AASlQa",
+        "name": "ChatGPT do Zero ao Avançado"
+      },
+      {
+        "id": "1mNAtL6xqEOHHIUi7PkERZL9eoOIdZS7Z",
+        "name": "ChatGPT e ChatGPT Plus"
+      },
+      {
+        "id": "1r35NwR-wthzisobFnm95AgG90yM3fVsl",
+        "name": "Crie_Agentes_de_IA_do_Zero_ao_Deploy"
+      },
+      {
+        "id": "1M2vHZ92LYYAmQOz_rtoggpAqaa3ak2NZ",
+        "name": "Crie_Rapido_Agentes_de_IA_Zero_ao_Avancado"
+      },
+      {
+        "id": "1hllOKIMQkeKnDZLFf6SMemm87amcyaVF",
+        "name": "Data Storytelling e Visualização de Dados"
+      },
+      {
+        "id": "1-prSVGt46P_DoMBjqaMl6fGrk5Q-48gr",
+        "name": "Dominr_LLMs_com_LangChain"
+      },
+      {
+        "id": "1LItw8KdapC8LiEBirMTH0yfc00E-XtA8",
+        "name": "Engenharia de Prompt com ChatGPT Gemini MetaAI Grok Perplexity"
+      },
+      {
+        "id": "1Q7LVeQiaXEhvYuWwmXDU4nIe2nDJq0dk",
+        "name": "Fundamentos da Trilha de n8n"
+      },
+      {
+        "id": "1OejQe1S5SdiRAOpmrN6Yjr6VUvJ-rZWw",
+        "name": "IA Generativa com LLMs Projeto com Python e FastAPI"
+      },
+      {
+        "id": "1IquJcE6zAJXYwqSeXmIHbwuiPGDPHx9C",
+        "name": "Integração entre Programa de Privacidade e Programa de Gestão de IA"
+      },
+      {
+        "id": "1IZpmpVUndkbSPi4n7VlTU33YEtF98ShD",
+        "name": "Introdução a Governança de IA"
+      },
+      {
+        "id": "11yopy8cACAcL73iLadVKK5jVmfzhtMyX",
+        "name": "Introdução aos Large Language Models ( LLMs )"
+      },
+      {
+        "id": "1Zjke6-FKYXfaZ644tEK4Q-2Dq8boyCVY",
+        "name": "Langchain 101 para Iniciantes ( OpenAI ChatGPT LLMops )"
+      },
+      {
+        "id": "1m7r1CWTPDZmEOkrhrb58vRC2MN69FEU-",
+        "name": "Langchain Crie Agentes e RAGs com IA Generativa"
+      },
+      {
+        "id": "1C48rVs7iukZdWijIL56CiQZ7hSTt6U7i",
+        "name": "LlamaIndex Crie Agentes de IA e Apps com LLMs"
+      },
+      {
+        "id": "1m5BBlID5JbP8Dfm992kUtEkxjn24z9nc",
+        "name": "OpenAI com Python ( GPT, DALL-e)"
+      },
+      {
+        "id": "16N9GEEtpQyOr8292lOECao4IPz9dspfO",
+        "name": "Programa de Compliance para Inteligência Artificial & Avaliação de Impacto de IA"
+      }
+    ]
+  },
+  {
+    "folder": "MBAs",
+    "label": "MBAs",
+    "files": [
+      {
+        "id": "1SwKEsVycVRSfpNimFKKK03vN1RDzMkV7",
+        "name": "DECLARACAO_CONCLUSAO_EAD_Arquiteto_Dados-PucMinas-Assinado"
+      },
+      {
+        "id": "1zl8JNGdkJdOr6cJdiWxowYa0A3zx2kmq",
+        "name": "DECLARACAO_CONCLUSAO_IEC_Arquiteto_Solucoes_PucMinas.pdf-Assinado"
+      },
+      {
+        "id": "1pmtqdPl-keET-JHdiCKQHovG25G1Gim_",
+        "name": "Gestão de Riscos e Cibersegurança_FOCUS"
+      },
+      {
+        "id": "1MjQK2nfqRVjxVgGhi8IyaTe1jIUQbZAi",
+        "name": "HE_EAD_Arquiteto_Dados-Assinado"
+      },
+      {
+        "id": "1yhDFOHr8ZgtzcGpTFvNPgQCDPOnyPC1t",
+        "name": "HE_IEC_191984-Arquitetura_Soluções-Assinado"
+      },
+      {
+        "id": "1r0Aql-nwdy4QJ2384inihV03ZKxeDv6E",
+        "name": "MBA Arquitetura de Dados PucMinas"
+      },
+      {
+        "id": "1zJpKGjBW-MzQKadVLB43zOmvDY5BbFWu",
+        "name": "MBA Arquitetura de Soluções PucMinas"
+      },
+      {
+        "id": "1cAYTZzesvWuvmmArThYiQ-mikxFjo1NC",
+        "name": "MBA Informática Forense IPOG"
+      },
+      {
+        "id": "1n-Z0OWvYfrv7tQwpRPPvcNJ2sUxhaX8T",
+        "name": "MBA Segurança Cibernética XPE"
+      }
+    ]
+  },
+  {
+    "folder": "Microsoft",
+    "label": "Microsoft",
+    "files": [
+      {
+        "id": "1Dhb8h6jztx91MmWJZ3koubIC6w_hCxln",
+        "name": "Dominando o Microsoft Copilot"
+      },
+      {
+        "id": "1KSEhcRsx3iWmuHAXJKUDOZQFh_WWUEko",
+        "name": "Microsoft Azure AI Fundamentals ( AI-900 )"
+      }
+    ]
+  },
+  {
+    "folder": "PowerBI",
+    "label": "Power BI",
+    "files": [
+      {
+        "id": "1JxBFoP-cazUelbyz-Z7GKq7_2Yywrtea",
+        "name": "Best Practices & Feature Reviews"
+      },
+      {
+        "id": "1VpyXin-hr2ZuIrflwLR-BO_bE1kh_h_b",
+        "name": "BI com Power BI Estudos de Caso Mar 2018"
+      },
+      {
+        "id": "1e6QfGw9wzRL_h3zBaFeXi4PbiOMfkQQ-",
+        "name": "Certificado Microsoft - Power Platform032021- 192"
+      },
+      {
+        "id": "1rZku67DUFgR8dtRG59xFJezVMbe8LTx9",
+        "name": "Curso Basico de DAX Studio"
+      },
+      {
+        "id": "1yyv2hfq6icPcJ9Zql6IonPxx7ADgyISL",
+        "name": "Curso Express de PowerBI"
+      },
+      {
+        "id": "141O57ZtLxIITEhEuEd2rwSamr50wRRfk",
+        "name": "Dax Formula Patterns"
+      },
+      {
+        "id": "1OWf3-VwkyWTYDEPqgLFwnCugp-90wwXj",
+        "name": "Introduction Dax Jul 2020"
+      },
+      {
+        "id": "1CVPg1sRjzVKf5R3IfRj0u9-WVzq5YOPo",
+        "name": "Introduction to Data Modeling for Power BI"
+      },
+      {
+        "id": "1esTQ-XywrbacL8BDYEdKbMRtA_LZFkg-",
+        "name": "Introduction to Power BI"
+      },
+      {
+        "id": "10PZH6oEi1r6Km7QRFTw9HZG-Pj4zzbga",
+        "name": "LINGUAGEM SQL COM POWER QUERY"
+      },
+      {
+        "id": "14NNfgxAc3kxYcaRbUFKkJdd9wsk7VLt0",
+        "name": "Mastering DAX Calculations"
+      },
+      {
+        "id": "1z9zBuk-WTQUGWrqzXCM1xfeMf5QLgATW",
+        "name": "Power BI & DAX Avançado Jan 2020"
+      },
+      {
+        "id": "1Qdfwf3D9bPQGNPHAKGh5xiD81aqYKrGh",
+        "name": "Power BI + DAX + Projeto de Vendas e Orçamento Out 2019"
+      },
+      {
+        "id": "1Y6V2IgDSeP9wS7Ph5EWEogRq5E4M5dBj",
+        "name": "Power BI 65 Soluções em DAX Out 2019"
+      },
+      {
+        "id": "1tMtp4-G7S9c-kitpEtHfWy3vj9jIfoQ1",
+        "name": "Power BI Aplicado a Problemas e Metas Reais Out 2019"
+      },
+      {
+        "id": "1pZZlhg3hqWuLSEIWjalq4mMsP_4z9cun",
+        "name": "Power BI Avançado"
+      },
+      {
+        "id": "1iEHfrOHAwTNIakMlPRsPgnrsNNtRRt7O",
+        "name": "Power Query Avançado"
+      },
+      {
+        "id": "1Fpz4PXEuGYHkpDEVjc7gAqeKo0AQIije",
+        "name": "Power Query Guia Definitivo"
+      }
+    ]
+  },
+  {
+    "folder": "Python_and_R",
+    "label": "Python e R",
+    "files": [
+      {
+        "id": "1YsoDdM99KW1Zwkr2SdT5iR-r5m5T34kS",
+        "name": "Boocamp-JD-Python-Intensivo-07-10-2024_15-09-02"
+      },
+      {
+        "id": "1W1HHprEPCsvZKl822tnv46LXw01_zmCm",
+        "name": "Bootcamp Imersão Data Science"
+      },
+      {
+        "id": "14kycriUXF0qq4HO_fFMzGvldc4BdPv6U",
+        "name": "Data Analyst with Python"
+      },
+      {
+        "id": "10SAE3Dl_UFDA15lZ9Z9pwbiWXqX_wxaU",
+        "name": "Data Analyst with R Track"
+      },
+      {
+        "id": "1dEPF6k4ful-3CKvE7RvQmbfGkQmSB6hC",
+        "name": "Estatística no R: Primeiros passos para a análise de dados no R"
+      },
+      {
+        "id": "1m56m5IlFJGr43Kc56qKfOKDkx6RcRPpZ",
+        "name": "FastAPI - APIs Modernas e Assíncronas com Python"
+      },
+      {
+        "id": "1EdRNQsQXlm9mCj6He0ZjtfV6bdj6hTe1",
+        "name": "Java Script do Zero - Trybe"
+      },
+      {
+        "id": "1mpkwREgQ_TtNtqxJ6HfW0Arti9qGLMfo",
+        "name": "Modelos de Análise Estatísticas em Python"
+      },
+      {
+        "id": "1weSTTIQgjlIzxGNTsK3FgPb2OiRErnZY",
+        "name": "Python 3 Completo Nov 2019"
+      },
+      {
+        "id": "1Sk6elk6Ndy5WPHbMEnLpMii1hzVrDhjb",
+        "name": "Treinamento Pentaho + Excel"
+      }
+    ]
+  },
+  {
+    "folder": "Security",
+    "label": "Segurança",
+    "files": [
+      {
+        "id": "16ttMOcvJQeBexVlUimgPOeqli_od3qQE",
+        "name": "Auditoria de Logs"
+      },
+      {
+        "id": "16Xy1VcEJQR7qW8m6kxqZ7p7PNjn9WwaU",
+        "name": "Auditoria de TI na prática"
+      },
+      {
+        "id": "1er2cVvtnh_LcA3i0xQduQgxqCWL7KnW0",
+        "name": "Certificado de Conclusão Cyber Academy - NILO HERNANDEZ DE LIMA JUNIOR"
+      },
+      {
+        "id": "1Dy0I-3JxWBy-w3-0jBuGp8aPNL4Z7nP8",
+        "name": "Certificado Evento Edição Especial: 3º HACKER SUMMIT 2023"
+      },
+      {
+        "id": "1_G3qlnpwSbC_FdR8IR9TBl1jM8DuFAIf",
+        "name": "Certificado_-_Básico Hackers do Bem"
+      },
+      {
+        "id": "1_JnDiWF2OPH-pHeQWiOR0ordXxm502HF",
+        "name": "Certificado_-_Nivelamento Hackers do Bem"
+      },
+      {
+        "id": "1zXx8LU_gC3bF7253imz6Sd-91wUWmEfV",
+        "name": "certificadoZWQzRGdiblgrZXAxcHQzZ0tYWEhRQT09"
+      },
+      {
+        "id": "17ZG9Xu9PSOLDj-XD7QMlkpyjRDz08tR7",
+        "name": "Certified Artificial Intelligence Security & Risk CAISR"
+      },
+      {
+        "id": "1JEWlkDdQabTTTR0fZlmey-OSUTCX7tyf",
+        "name": "CIS Controls V 8.1 Foundation"
+      },
+      {
+        "id": "16ve2FClTmfjseai4dH7BqoRNvBzq0GhI",
+        "name": "DESEC - Introdução ao Pentest na Prática Fev 2023"
+      },
+      {
+        "id": "1EGTruoY5z6ETz-Cf1ZP7O1j0arWxYui5",
+        "name": "Evolução da área de cibersegurança como parte do compliance corporativo"
+      },
+      {
+        "id": "1W3jGIKPlU-MaL1do_vTE4wg6xneBonFq",
+        "name": "Fundamentos e Proteçao de Dados"
+      },
+      {
+        "id": "1lWsm8_jI7r9DmsckbWeKD5Wi5Xry6czv",
+        "name": "Introduçao a Segurança da Informação"
+      },
+      {
+        "id": "15X_UQxVKWcluIq7BjRt3t6ecWVRde4Uc",
+        "name": "NMAP e Wireshar para Segurança da Informação"
+      },
+      {
+        "id": "16ujuMenrMxvFq7CfA9kCX240u9Dubu6x",
+        "name": "OSINT - Inteligência de Fontes Abertas - 30-05-2022"
+      }
+    ]
+  },
+  {
+    "folder": "SQL",
+    "label": "SQL",
+    "files": [
+      {
+        "id": "1LFcMA78-WHG3c8znu9Tt-JuJc3_hNM5C",
+        "name": "Consultando Dados com o Microsoft Transact-SQL"
+      },
+      {
+        "id": "1LsbXhgatge1PVEtaSM1RSoWeYioNJo-f",
+        "name": "Data Analyst in SQL"
+      },
+      {
+        "id": "1-0XPEYXtYo-wkprbFSETqqlFliBYEkxG",
+        "name": "Data Analyst with SQL Server Track"
+      },
+      {
+        "id": "18htXBMSh1GyCyAtAIDQ-TUt4Jpoj8mYK",
+        "name": "Functions for Manipulating Data in SQL Server"
+      },
+      {
+        "id": "1PdWvHz5hobwozBrAI0o7oE4kBQmcMnf9",
+        "name": "SQL Fundamentals Track"
+      },
+      {
+        "id": "19y8Bz-HhJshx-Un3N62HhsVtwru-5Jqm",
+        "name": "Workshop Configurando SQL Server de Produção do Zero"
+      }
+    ]
+  }
+]

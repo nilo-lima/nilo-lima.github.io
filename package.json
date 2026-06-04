@@ -10,7 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate:og": "node scripts/generate-og.mjs"
+    "generate:og": "node scripts/generate-og.mjs",
+    "sync:certs": "node scripts/sync-drive-certs.mjs"
+  },
+  "devDependencies": {
+    "googleapis": "^144.0.0"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

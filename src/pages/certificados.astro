@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import rawData from '../data/certificados.json';
+
+type CertFile  = { id: string; name: string };
+type CertGroup = { folder: string; label: string; files: CertFile[] };
+
+const groups = rawData as CertGroup[];
+
+const title       = 'Cursos e Certificados | Nilo Lima Jr';
+const description = 'Trilha contínua de aprendizado em Cloud, DevOps, Segurança, IA, dados e gestão — mais de 300 certificados verificáveis.';
+
+function toSlug(str: string) {
+  return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+---
+<Layout title={title} description={description} lang="pt-BR">
+  <main id="main" class="py-16 px-6 max-w-5xl mx-auto">
+
+    <div class="mb-10">
+      <p class="text-xs font-mono text-primary tracking-[0.2em] uppercase">// Cursos &amp; Certificados</p>
+      <h1 class="sr-only">Cursos e Certificados — Nilo Lima Jr</h1>
+      <p class="text-secondary text-sm mt-3 leading-relaxed max-w-2xl">
+        Trilha contínua de aprendizado em Cloud, DevOps, Segurança, IA, dados e gestão.
+        Clique em qualquer certificado para visualizar no Google Drive.
+      </p>
+    </div>
+
+    {groups.length === 0 ? (
+      <div class="border border-dashed border-primary/20 p-8 text-center">
+        <p class="text-secondary text-sm font-mono">Índice de certificados em construção.</p>
+      </div>
+    ) : (
+      <>
+        <nav aria-label="Grupos de certificados" class="mb-12 flex flex-wrap gap-2">
+          {groups.map(g => (
+            <a
+              href={`#${toSlug(g.label)}`}
+              class="px-3 py-1 text-xs font-mono text-secondary border border-primary/20 hover:border-primary/60 hover:text-primary transition-all"
+            >
+              {g.label}
+              <span class="ml-1 opacity-40">({g.files.length})</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="space-y-16">
+          {groups.map(group => (
+            <section id={toSlug(group.label)}>
+              <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase mb-6 pb-2 border-b border-primary/10">
+                {group.label}
+                <span class="text-secondary opacity-40 ml-2">({group.files.length})</span>
+              </h2>
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {group.files.map(file => (
+                  <a
+                    href={`https://drive.google.com/file/d/${file.id}/view`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex flex-col bg-primary/5 border border-primary/10 hover:border-primary/40 transition-all overflow-hidden"
+                    title={file.name}
+                  >
+                    <div class="aspect-[4/3] bg-primary/5 overflow-hidden">
+                      <img
+                        src={`/certs-thumbnails/${file.id}.png`}
+                        alt={file.name}
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cert-thumb"
+                      />
+                    </div>
+                    <div class="p-2">
+                      <p class="text-[11px] text-secondary leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                        {file.name}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </>
+    )}
+  </main>
+</Layout>
+
+<script>
+  // Replace broken thumbnails with a styled placeholder
+  document.querySelectorAll<HTMLImageElement>('img.cert-thumb').forEach(img => {
+    img.addEventListener('error', () => {
+      const wrap = img.parentElement;
+      if (!wrap) return;
+      img.remove();
+      wrap.innerHTML = '<div class="w-full h-full flex items-center justify-center"><span class="font-mono text-xs opacity-20 select-none">PDF</span></div>';
+    });
+  });
+</script>

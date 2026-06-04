@@ -5,6 +5,9 @@ node_modules/
 dist/
 ./planetary-parsec/
 
+# Thumbnails geradas pelo sync — baixadas no build, não versionar
+public/certs-thumbnails/
+
 # Astro cache
 .astro/
 
