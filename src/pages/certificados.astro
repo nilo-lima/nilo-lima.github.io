@@ -32,10 +32,23 @@ function toSlug(str: string) {
       </div>
     ) : (
       <>
-        <nav aria-label="Grupos de certificados" class="mb-12 flex flex-wrap gap-2">
+        <div class="mb-8">
+          <input
+            id="cert-search"
+            type="search"
+            placeholder="Buscar certificado..."
+            autocomplete="off"
+            class="w-full max-w-md bg-transparent border border-primary/20 focus:border-primary/60 outline-none px-4 py-2 text-sm font-mono text-accent placeholder:text-secondary/40 transition-colors"
+            aria-label="Buscar certificados"
+          />
+          <p id="cert-search-count" class="mt-2 text-xs font-mono text-secondary opacity-0 transition-opacity"></p>
+        </div>
+
+        <nav id="cert-nav" aria-label="Grupos de certificados" class="mb-12 flex flex-wrap gap-2">
           {groups.map(g => (
             <a
               href={`#${toSlug(g.label)}`}
+              data-nav-group={toSlug(g.label)}
               class="px-3 py-1 text-xs font-mono text-secondary border border-primary/20 hover:border-primary/60 hover:text-primary transition-all"
             >
               {g.label}
@@ -44,9 +57,13 @@ function toSlug(str: string) {
           ))}
         </nav>
 
+        <div id="cert-empty" class="hidden border border-dashed border-primary/20 p-8 text-center">
+          <p class="text-secondary text-sm font-mono">Nenhum certificado encontrado.</p>
+        </div>
+
         <div class="space-y-16">
           {groups.map(group => (
-            <section id={toSlug(group.label)}>
+            <section id={toSlug(group.label)} data-group-section={toSlug(group.label)}>
               <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase mb-6 pb-2 border-b border-primary/10">
                 {group.label}
                 <span class="text-secondary opacity-40 ml-2">({group.files.length})</span>
@@ -59,6 +76,8 @@ function toSlug(str: string) {
                     rel="noopener noreferrer"
                     class="group flex flex-col bg-primary/5 border border-primary/10 hover:border-primary/40 transition-all overflow-hidden"
                     title={file.name}
+                    data-cert-name={file.name.toLowerCase()}
+                    data-cert-group={toSlug(group.label)}
                   >
                     <div class="aspect-[4/3] bg-primary/5 overflow-hidden">
                       <img
@@ -87,7 +106,7 @@ function toSlug(str: string) {
 </Layout>
 
 <script>
-  // Replace broken thumbnails with a styled placeholder
+  // Broken thumbnail fallback
   document.querySelectorAll<HTMLImageElement>('img.cert-thumb').forEach(img => {
     img.addEventListener('error', () => {
       const wrap = img.parentElement;
@@ -95,5 +114,52 @@ function toSlug(str: string) {
       img.remove();
       wrap.innerHTML = '<div class="w-full h-full flex items-center justify-center"><span class="font-mono text-xs opacity-20 select-none">PDF</span></div>';
     });
+  });
+
+  // Search / filter
+  const input   = document.getElementById('cert-search') as HTMLInputElement | null;
+  const counter = document.getElementById('cert-search-count');
+  const empty   = document.getElementById('cert-empty');
+  const cards   = document.querySelectorAll<HTMLAnchorElement>('[data-cert-name]');
+  const sections = document.querySelectorAll<HTMLElement>('[data-group-section]');
+  const navPills = document.querySelectorAll<HTMLAnchorElement>('[data-nav-group]');
+
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+
+    if (!q) {
+      cards.forEach(c => c.style.display = '');
+      sections.forEach(s => s.style.display = '');
+      navPills.forEach(p => p.style.display = '');
+      if (empty) empty.classList.add('hidden');
+      if (counter) counter.style.opacity = '0';
+      return;
+    }
+
+    let total = 0;
+    const visibleGroups = new Set<string>();
+
+    cards.forEach(card => {
+      const match = card.dataset.certName!.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) {
+        total++;
+        visibleGroups.add(card.dataset.certGroup!);
+      }
+    });
+
+    sections.forEach(sec => {
+      sec.style.display = visibleGroups.has(sec.dataset.groupSection!) ? '' : 'none';
+    });
+
+    navPills.forEach(pill => {
+      pill.style.display = visibleGroups.has(pill.dataset.navGroup!) ? '' : 'none';
+    });
+
+    if (empty) empty.classList.toggle('hidden', total > 0);
+    if (counter) {
+      counter.textContent = `${total} certificado${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
+      counter.style.opacity = '1';
+    }
   });
 </script>
