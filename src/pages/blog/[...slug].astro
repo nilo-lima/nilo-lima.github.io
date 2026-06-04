@@ -16,52 +16,101 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 const wordCount = post.body.trim().split(/\s+/).length;
 const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+const hasToc = tocHeadings.length >= 4;
 ---
 <Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description}>
   <Navbar />
   <main id="main">
-    <article class="pt-32 pb-12 px-6 max-w-3xl mx-auto">
-      <a href="/blog" class="text-xs font-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest">&lt;- VOLTAR_AO_BLOG</a>
-      <header class="mt-8 space-y-4 border-b border-primary/10 pb-8">
-        <div class="flex flex-wrap items-baseline gap-3">
-          <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
-            {formatDate(post.data.pubDate)}
-          </time>
-          <span class="text-[10px] font-mono text-primary/50 uppercase tracking-widest">
-            · {readingTime} min de leitura
-          </span>
-          {post.data.updatedDate && (
-            <span class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest">
-              · atualizado {formatDate(post.data.updatedDate)}
-            </span>
-          )}
-        </div>
-        <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent">{post.data.title}</h1>
-        <p class="text-secondary text-lg leading-relaxed">{post.data.description}</p>
-        <div class="flex flex-wrap gap-2 pt-2">
-          {post.data.tags.map(tag => (
-            <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">#{tag}</span>
-          ))}
-        </div>
-        {post.data.sourceUrl && (
-          <p class="text-xs font-mono text-secondary pt-2">
-            Fonte original:
-            <a href={post.data.sourceUrl} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{post.data.sourceUrl}</a>
-          </p>
-        )}
-      </header>
+    <div class="px-6">
+      <div class={hasToc
+        ? "max-w-5xl mx-auto xl:grid xl:grid-cols-[1fr_220px] xl:gap-12 xl:items-start"
+        : "max-w-3xl mx-auto"
+      }>
 
-      <div class="prose-invert mt-10">
-        <Content />
+        <article class="pt-32 pb-12 min-w-0">
+          <a href="/blog" class="text-xs font-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest">&lt;- VOLTAR_AO_BLOG</a>
+          <header class="mt-8 space-y-4 border-b border-primary/10 pb-8">
+            <div class="flex flex-wrap items-baseline gap-3">
+              <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
+                {formatDate(post.data.pubDate)}
+              </time>
+              <span class="text-[10px] font-mono text-primary/50 uppercase tracking-widest">
+                · {readingTime} min de leitura
+              </span>
+              {post.data.updatedDate && (
+                <span class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest">
+                  · atualizado {formatDate(post.data.updatedDate)}
+                </span>
+              )}
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent">{post.data.title}</h1>
+            <p class="text-secondary text-lg leading-relaxed">{post.data.description}</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              {post.data.tags.map(tag => (
+                <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">#{tag}</span>
+              ))}
+            </div>
+            {post.data.sourceUrl && (
+              <p class="text-xs font-mono text-secondary pt-2">
+                Fonte original:
+                <a href={post.data.sourceUrl} class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{post.data.sourceUrl}</a>
+              </p>
+            )}
+          </header>
+
+          {hasToc && (
+            <details class="xl:hidden mt-8 border border-primary/20 group">
+              <summary class="px-4 py-3 text-xs font-mono text-primary tracking-[0.15em] uppercase cursor-pointer list-none flex justify-between items-center hover:bg-primary/5 transition-colors">
+                // ÍNDICE
+                <span class="opacity-40 group-open:rotate-180 transition-transform">▾</span>
+              </summary>
+              <nav class="px-4 pb-4 pt-2 space-y-1">
+                {tocHeadings.map(h => (
+                  <a
+                    href={`#${h.slug}`}
+                    class={`block text-xs font-mono py-0.5 transition-colors hover:text-primary ${h.depth === 3 ? 'pl-4 text-secondary/50' : 'text-secondary/70'}`}
+                  >
+                    {h.text}
+                  </a>
+                ))}
+              </nav>
+            </details>
+          )}
+
+          <div class="prose-invert mt-10">
+            <Content />
+          </div>
+        </article>
+
+        {hasToc && (
+          <aside class="hidden xl:block" aria-label="Índice do post">
+            <div class="sticky top-24 pt-32 pb-12">
+              <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">// Índice</p>
+              <nav id="toc-nav">
+                {tocHeadings.map(h => (
+                  <a
+                    href={`#${h.slug}`}
+                    class={`toc-link block text-xs font-mono py-1 leading-snug transition-colors hover:text-primary ${h.depth === 3 ? 'pl-3 text-secondary/40' : 'text-secondary/60'}`}
+                  >
+                    {h.text}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </aside>
+        )}
+
       </div>
-    </article>
+    </div>
   </main>
 </Layout>
 
@@ -78,6 +127,7 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
+    scroll-margin-top: 6rem;
   }
   .prose-invert h3 {
     color: #E2E8F0;
@@ -85,6 +135,12 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+    scroll-margin-top: 6rem;
+  }
+  .toc-link.toc-active {
+    color: #38BDF8;
+    border-left: 2px solid #38BDF8;
+    padding-left: 0.5rem;
   }
   .prose-invert p { margin: 1rem 0; }
   .prose-invert a {
@@ -144,3 +200,31 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
     border: 1px solid rgba(56, 189, 248, 0.1);
   }
 </style>
+
+<script>
+  const tocNav = document.getElementById('toc-nav');
+  if (tocNav) {
+    const links = tocNav.querySelectorAll<HTMLAnchorElement>('.toc-link');
+    const headingEls = document.querySelectorAll<HTMLElement>('.prose-invert h2, .prose-invert h3');
+
+    const setActive = (id: string) => {
+      links.forEach(a => {
+        a.classList.toggle('toc-active', a.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+            break;
+          }
+        }
+      },
+      { rootMargin: '-80px 0% -60% 0%', threshold: 0 }
+    );
+
+    headingEls.forEach(h => observer.observe(h));
+  }
+</script>
