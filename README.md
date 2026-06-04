@@ -23,7 +23,8 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 - **Bilíngue PT-BR / EN** — alternância via navbar, i18n centralizado em `src/i18n/ui.ts`
 - **Blog** com paginação (6 posts/página), filtro por tag, tempo de leitura e RSS feed em `/rss.xml`
 - **Projetos** via Content Collections com grid, filtro por tag e badge de destaque
-- **Certificações** com cartões de altura uniforme e link para Credly
+- **Certificações** com cartões de altura uniforme e links para Credly, Microsoft Learn e Accredible
+- **Página `/certificados`** com ~185 certificados de cursos organizados por tema, thumbnails geradas via Google Drive API e sincronização automática no deploy
 - **Currículos para download** (Gestão, Infra, Sistemas, DevOps/Cloud) na seção Contato
 - **OG image** 1200×630 gerada estaticamente para compartilhamento social
 - **SEO completo** — canonical, hreflang, JSON-LD Person, Open Graph, Twitter Cards
@@ -58,9 +59,11 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321 — hot reload
-npm run build    # gera dist/ para validar o build
-npm run preview  # serve dist/ localmente
+npm run dev           # http://localhost:4321 — hot reload
+npm run build         # gera dist/ para validar o build
+npm run preview       # serve dist/ localmente
+npm run sync:certs    # sincroniza certificados do Google Drive (requer credenciais)
+npm run generate:og   # regenera public/og.png (1200×630)
 ```
 
 ---
@@ -78,6 +81,7 @@ npm run preview  # serve dist/ localmente
 | `/en/projects/` | Versão EN do grid de projetos |
 | `/blog/` | Listagem paginada de posts com filtro por tag |
 | `/blog/<slug>/` | Post individual em Markdown |
+| `/certificados/` | ~185 certificados de cursos organizados em 17 grupos temáticos |
 | `/rss.xml` | Feed RSS do blog |
 | `/404.html` | Página de erro customizada |
 
@@ -139,6 +143,24 @@ Os links de download na seção Contato apontam diretamente para esses arquivos.
 </details>
 
 <details>
+  <summary>Sincronizar certificados do Google Drive</summary>
+
+A página `/certificados` é alimentada por `src/data/certificados.json`, gerado pelo script de sync. As thumbnails ficam em `public/certs-thumbnails/` (não versionado).
+
+**Em produção:** o sync roda automaticamente no GitHub Actions a cada push para `main`, usando o secret `GDRIVE_CREDENTIALS`.
+
+**Localmente:**
+```bash
+export GDRIVE_CREDENTIALS=$(cat /caminho/para/service-account.json)
+npm run sync:certs
+npm run build && npm run preview
+```
+
+Para adicionar uma nova pasta/grupo ao Drive, edite o mapeamento `FOLDER_LABELS` em `scripts/sync-drive-certs.mjs` e faça um novo push.
+
+</details>
+
+<details>
   <summary>Regenerar OG image</summary>
 
 A imagem de preview social (`public/og.png`) é gerada pelo script `scripts/generate-og.mjs` usando `sharp`. Para atualizar após mudanças de branding:
@@ -153,7 +175,12 @@ npm run generate:og
 
 ## 🚢 Deploy
 
-Qualquer push para `main` aciona o workflow em `.github/workflows/deploy.yml`, que executa `npm run build` e publica automaticamente no **GitHub Pages**.
+Qualquer push para `main` aciona o workflow em `.github/workflows/deploy.yml`, que executa em sequência:
+1. **Sync de certificados** — `node scripts/sync-drive-certs.mjs` (requer o secret `GDRIVE_CREDENTIALS` configurado no repositório)
+2. **Build** — `npm run build`
+3. **Publicação** — GitHub Pages
+
+As thumbnails da página `/certificados` são baixadas automaticamente via Google Drive API a cada deploy e não ficam versionadas no repositório.
 
 ---
 
