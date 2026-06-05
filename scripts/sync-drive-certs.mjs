@@ -36,6 +36,7 @@ const FOLDER_LABELS = {
   'Academia Forense Digital':    'Academia Forense Digital',
   'BootCamps_XPe':               'Bootcamps XP Educação',
   'PowerBI':                     'Power BI',
+  'Linux_e_Redes':               'Linux e Redes',
 };
 
 const IGNORED_FOLDERS = new Set(['Certificações', 'Certificacoes', 'Certificações ']);
