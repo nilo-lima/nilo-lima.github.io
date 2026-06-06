@@ -162,6 +162,16 @@ const personJsonLd = {
 				}, { passive: true });
 				btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 			}
+
+			document.addEventListener('keydown', (e) => {
+				const tag = (e.target as HTMLElement).tagName;
+				const editable = (e.target as HTMLElement).isContentEditable;
+				if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || editable) return;
+				if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+					e.preventDefault();
+					window.location.href = '/busca';
+				}
+			});
 		</script>
 	</body>
 </html>
