@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const lang = 'pt-BR' as const;
+const updatedAt = '2026-06-06';
+const siteUrl = 'https://nilo-lima.github.io';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl + '/' },
+    { '@type': 'ListItem', position: 2, name: '/now', item: siteUrl + '/now/' },
+  ],
+};
+---
+<Layout
+  title="/now · Nilo Lima Jr"
+  description="O que Nilo Lima Jr está trabalhando atualmente — foco, aprendizado e projetos em andamento."
+  ogImage="/og/pages/now.png"
+  lang={lang}
+  breadcrumbJsonLd={breadcrumbJsonLd}
+>
+  <Navbar lang={lang} />
+  <main id="main" data-pagefind-ignore="all" class="pt-32 pb-16 px-6 max-w-3xl mx-auto">
+
+    <section class="pb-10 border-b border-primary/10">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: NOW</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4">/now</h1>
+      <p class="text-secondary text-sm font-mono mt-3">
+        Atualizado em <time datetime={updatedAt}>junho 2026</time> · Canoas, RS — Brasil
+      </p>
+    </section>
+
+    <div class="mt-12 space-y-14">
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Foco atual</p>
+        <ul class="space-y-3 text-secondary text-base leading-relaxed">
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            Construindo este portfólio como laboratório público de DevOps, Cloud e IA aplicada a infraestrutura.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            Desenvolvendo automações multi-cloud com Terraform, Ansible e GitHub Actions em ambientes AWS e Azure.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            Explorando patterns de LLM Ops integrados a pipelines de infraestrutura — Claude e Gemini CLI como copilots de engenharia.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Aprendendo</p>
+        <ul class="space-y-3 text-secondary text-base leading-relaxed">
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            Kubernetes avançado: operadores customizados, service mesh e estratégias de rollout progressivo.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            FinOps e otimização de custo em ambientes multi-cloud — foco em rightsizing e políticas de tagging.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            Observabilidade distribuída com OpenTelemetry, Prometheus e Grafana em escala.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Stack do momento</p>
+        <div class="flex flex-wrap gap-2">
+          {[
+            'Terraform', 'Ansible', 'Docker', 'Kubernetes',
+            'GitHub Actions', 'AWS', 'Azure', 'Python',
+            'Claude', 'Gemini CLI', 'Prometheus', 'Grafana',
+          ].map(tool => (
+            <span class="text-[10px] font-mono border border-primary/20 px-2.5 py-1 text-secondary uppercase tracking-widest">
+              {tool}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section class="pt-10 border-t border-primary/10 flex flex-wrap justify-between items-end gap-4">
+        <div class="flex flex-wrap gap-4">
+          <a href="/blog" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            BLOG →
+          </a>
+          <a href="/projetos" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            PROJETOS →
+          </a>
+        </div>
+        <p class="text-[10px] font-mono text-secondary/40">
+          Padrão <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="hover:text-primary/60 transition-colors">/now</a> por Derek Sivers
+        </p>
+      </section>
+
+    </div>
+  </main>
+</Layout>

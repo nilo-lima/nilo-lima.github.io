@@ -4,6 +4,16 @@ import Navbar from '../../components/Navbar.astro';
 import { getCollection } from 'astro:content';
 
 const lang = 'pt-BR' as const;
+const siteUrl = 'https://nilo-lima.github.io';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home',     item: siteUrl + '/'          },
+    { '@type': 'ListItem', position: 2, name: 'Projetos', item: siteUrl + '/projetos/' },
+  ],
+};
 
 const projects = (await getCollection('projects'))
   .sort((a, b) => {
@@ -18,7 +28,9 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
 <Layout
   title="Projetos · Nilo Lima Jr"
   description="Repositórios públicos de infraestrutura reprodutível, automação e IA aplicada a operações."
+  ogImage="/og/pages/projetos.png"
   lang={lang}
+  breadcrumbJsonLd={breadcrumbJsonLd}
 >
   <Navbar lang={lang} />
   <main id="main">

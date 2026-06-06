@@ -33,6 +33,7 @@ interface Props {
 
 const { tagLabel, posts } = Astro.props;
 const lang = 'pt-BR' as const;
+const tagSlug = Astro.params.tag;
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -40,6 +41,7 @@ const formatDate = (d: Date) =>
 <Layout
   title={`#${tagLabel} · Tags · Blog · Nilo Lima Jr`}
   description={`Posts sobre ${tagLabel} — ${posts.length} ${posts.length === 1 ? 'resultado' : 'resultados'}.`}
+  ogImage={`/og/pages/tags/${tagSlug}.png`}
   lang={lang}
 >
   <Navbar lang={lang} />

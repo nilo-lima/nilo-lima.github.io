@@ -47,6 +47,16 @@ const siteUrl = 'https://nilo-lima.github.io';
 const postUrl = `${siteUrl}/blog/${post.slug}/`;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home',  item: siteUrl + '/'       },
+    { '@type': 'ListItem', position: 2, name: 'Blog',  item: `${siteUrl}/blog/`  },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: postUrl      },
+  ],
+};
+
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
@@ -61,7 +71,7 @@ const articleJsonLd = {
   inLanguage: 'pt-BR',
 };
 ---
-<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description} ogImage={`/og/posts/${post.slug}.png`} articleJsonLd={articleJsonLd}>
+<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description} ogImage={`/og/posts/${post.slug}.png`} articleJsonLd={articleJsonLd} breadcrumbJsonLd={breadcrumbJsonLd}>
   <Navbar />
   <main id="main">
     <!-- Barra de progresso de leitura -->

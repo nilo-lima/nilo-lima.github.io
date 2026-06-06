@@ -7,8 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/generate-og-posts.mjs && astro build && npx pagefind --site dist",
+    "build": "node scripts/generate-og-posts.mjs && node scripts/generate-og-pages.mjs && astro build && npx pagefind --site dist",
     "generate:og-posts": "node scripts/generate-og-posts.mjs",
+    "generate:og-pages": "node scripts/generate-og-pages.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "generate:og": "node scripts/generate-og.mjs",

@@ -11,6 +11,7 @@ interface Props {
 	ogImage?: string;
 	lang?: 'pt-BR' | 'en';
 	articleJsonLd?: Record<string, unknown>;
+	breadcrumbJsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
 	ogImage = "/og.png",
 	lang = 'pt-BR',
 	articleJsonLd,
+	breadcrumbJsonLd,
 } = Astro.props;
 
 const defaultDescription = lang === 'en'
@@ -104,6 +106,10 @@ const personJsonLd = {
 		{articleJsonLd && (
 			<script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
 		)}
+		<!-- JSON-LD Breadcrumb -->
+		{breadcrumbJsonLd && (
+			<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+		)}
 		<!-- Goatcounter analytics — privacy-first, sem cookies, LGPD-friendly -->
 		<!-- Criar conta em goatcounter.com com código "nilo-lima" se ainda não existir -->
 		<script data-goatcounter="https://nilo-lima.goatcounter.com/count"
@@ -124,6 +130,7 @@ const personJsonLd = {
 					<a href="https://www.credential.net/profile/nilohernandezdelimajunior896171/wallet" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors uppercase tracking-widest">Accredible</a>
 					<a href="mailto:nilo.lima@gmail.com" class="hover:text-primary transition-colors uppercase tracking-widest">Email</a>
 					<a href="/rss.xml" class="hover:text-primary transition-colors uppercase tracking-widest">RSS</a>
+					<a href="/now" class="hover:text-primary transition-colors tracking-widest">/now</a>
 				</div>
 				<span class="text-[11px] font-mono text-secondary/30">© {new Date().getFullYear()} Nilo Lima Jr</span>
 			</div>
