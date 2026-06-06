@@ -130,8 +130,8 @@ const personJsonLd = {
 					<a href="https://www.credential.net/profile/nilohernandezdelimajunior896171/wallet" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors uppercase tracking-widest">Accredible</a>
 					<a href="mailto:nilo.lima@gmail.com" class="hover:text-primary transition-colors uppercase tracking-widest">Email</a>
 					<a href="/rss.xml" class="hover:text-primary transition-colors uppercase tracking-widest">RSS</a>
-					<a href="/now" class="hover:text-primary transition-colors tracking-widest">/now</a>
-					<a href="/uses" class="hover:text-primary transition-colors tracking-widest">/uses</a>
+					<a href={lang === 'en' ? '/en/now/' : '/now'} class="hover:text-primary transition-colors tracking-widest">/now</a>
+					<a href={lang === 'en' ? '/en/uses/' : '/uses'} class="hover:text-primary transition-colors tracking-widest">/uses</a>
 				</div>
 				<span class="text-[11px] font-mono text-secondary/30">© {new Date().getFullYear()} Nilo Lima Jr</span>
 			</div>

@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const lang = 'en' as const;
+const updatedAt = '2026-06-06';
+const siteUrl = 'https://nilo-lima.github.io';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl + '/en/' },
+    { '@type': 'ListItem', position: 2, name: '/uses', item: siteUrl + '/en/uses/' },
+  ],
+};
+---
+<Layout
+  title="/uses · Nilo Lima Jr"
+  description="Hardware, tools, editor and stack I use daily as an IT Manager and DevOps/Cloud specialist."
+  ogImage="/og/pages/en-uses.png"
+  lang={lang}
+  breadcrumbJsonLd={breadcrumbJsonLd}
+>
+  <Navbar lang={lang} />
+  <main id="main" data-pagefind-ignore="all" class="pt-32 pb-16 px-6 max-w-3xl mx-auto">
+
+    <section class="pb-10 border-b border-primary/10">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: USES</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4">/uses</h1>
+      <p class="text-secondary text-sm font-mono mt-3">
+        Updated <time datetime={updatedAt}>June 2026</time> · Stack, hardware and daily tools
+      </p>
+    </section>
+
+    <div class="mt-12 space-y-14">
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Hardware</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'Main workstation', value: 'Linux desktop — AMD Ryzen processor, 32 GB RAM, NVMe SSD' },
+            { label: 'Laptop',           value: 'Corporate notebook for mobility and hybrid meetings' },
+            { label: 'Monitor',          value: '27" IPS QHD monitor — prioritizing code readability and dashboard clarity' },
+            { label: 'Peripherals',      value: 'Mechanical keyboard with linear switches, ergonomic mouse, noise-cancelling headset' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// OS & terminal</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'OS',      value: 'Ubuntu LTS — stability for infrastructure environments; WSL2 on corporate laptop' },
+            { label: 'Shell',   value: 'Bash with extensive aliases and functions for pipeline automation and cloud CLI workflows' },
+            { label: 'Terminal', value: 'Default terminal + tmux for persistent sessions and simultaneous log panels' },
+            { label: 'Prompt',  value: 'Starship — shows git branch, active Kubernetes context and command duration' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Editor & IDE</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'Main editor',  value: 'Visual Studio Code — extensions for Terraform HCL, Docker, Kubernetes, Python and YAML' },
+            { label: 'AI agent',     value: 'Claude Code CLI (Anthropic) — pair programming, refactoring and IaC generation' },
+            { label: 'Quick edits',  value: 'Vim / Nano for direct edits on remote servers over SSH' },
+            { label: 'Theme',        value: 'Deep dark mode with JetBrains Mono — zero visual fatigue in long sessions' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Cloud & DevOps</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {[
+            'AWS CLI', 'Azure CLI', 'gcloud CLI',
+            'Terraform', 'Ansible', 'Helm',
+            'kubectl', 'Docker', 'Podman',
+            'GitHub Actions', 'ArgoCD', 'Prometheus',
+            'Grafana', 'OpenTelemetry', 'Trivy',
+          ].map(tool => (
+            <span class="text-[10px] font-mono border border-primary/20 px-2.5 py-1 text-secondary uppercase tracking-widest">
+              {tool}
+            </span>
+          ))}
+        </div>
+        <ul class="space-y-3 text-secondary text-sm leading-relaxed">
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">Terraform</strong> for reproducible IaC across AWS and Azure — versioned modules, remote state on S3 + DynamoDB.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">GitHub Actions</strong> as the primary CI/CD platform — reusable workflows with environment-based approvals.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">Prometheus + Grafana</strong> for observability — SLI/SLO dashboards and Alertmanager-driven alerting.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// AI & productivity</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'Primary LLM',    value: 'Claude (Anthropic) — technical reasoning, IaC review, runbook and documentation generation' },
+            { label: 'AI CLI',         value: 'Claude Code and Gemini CLI — terminal copilots integrated into the infrastructure workflow' },
+            { label: 'Task management', value: 'GitHub Issues + Projects for personal backlog and sprint tracking' },
+            { label: 'Notes & docs',   value: 'Markdown + Git — all technical documentation version-controlled in the project repo' },
+            { label: 'Communication',  value: 'Slack for distributed teams; Microsoft Teams in corporate environments' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="pt-10 border-t border-primary/10 flex flex-wrap justify-between items-end gap-4">
+        <div class="flex flex-wrap gap-4">
+          <a href="/en/now/" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            /now →
+          </a>
+          <a href="/en/projects/" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            PROJECTS →
+          </a>
+        </div>
+        <p class="text-[10px] font-mono text-secondary/40">
+          Inspired by <a href="https://uses.tech" target="_blank" rel="noopener noreferrer" class="hover:text-primary/60 transition-colors">uses.tech</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+</Layout>

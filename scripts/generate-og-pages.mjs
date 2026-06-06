@@ -41,10 +41,15 @@ function buildSvg(label, title, subtitle) {
 
 // ── Páginas estáticas ──────────────────────────────────────────────────
 const staticPages = [
-  { slug: 'blog',     label: 'CAT: BLOG_INDEX',    title: 'Blog',     subtitle: 'DevOps · Cloud · IA aplicada a infraestrutura'  },
-  { slug: 'projetos', label: 'CAT: PROJECTS_INDEX', title: 'Projetos', subtitle: 'Infraestrutura reprodutível, automação & IaC'    },
-  { slug: 'now',      label: 'CAT: NOW',            title: '/now',     subtitle: 'O que estou trabalhando atualmente'               },
-  { slug: 'uses',     label: 'CAT: USES',           title: '/uses',    subtitle: 'Stack, hardware e ferramentas de trabalho'        },
+  // PT-BR
+  { slug: 'blog',        label: 'CAT: BLOG_INDEX',    title: 'Blog',     subtitle: 'DevOps · Cloud · IA aplicada a infraestrutura'      },
+  { slug: 'projetos',    label: 'CAT: PROJECTS_INDEX', title: 'Projetos', subtitle: 'Infraestrutura reprodutível, automação & IaC'        },
+  { slug: 'now',         label: 'CAT: NOW',            title: '/now',     subtitle: 'O que estou trabalhando atualmente'                   },
+  { slug: 'uses',        label: 'CAT: USES',           title: '/uses',    subtitle: 'Stack, hardware e ferramentas de trabalho'            },
+  // EN
+  { slug: 'en-projects', label: 'CAT: PROJECTS_INDEX', title: 'Projects', subtitle: 'Reproducible infrastructure, automation & IaC'      },
+  { slug: 'en-now',      label: 'CAT: NOW',            title: '/now',     subtitle: 'What I am working on right now'                      },
+  { slug: 'en-uses',     label: 'CAT: USES',           title: '/uses',    subtitle: 'My stack, hardware and daily tools'                  },
 ];
 
 for (const page of staticPages) {
