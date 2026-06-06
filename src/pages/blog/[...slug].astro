@@ -118,8 +118,9 @@ const articleJsonLd = {
               <button
                 id="share-copy-link"
                 data-url={postUrl}
+                data-title={post.data.title}
                 class="flex items-center gap-1.5 text-[10px] font-mono border border-primary/20 px-3 py-1.5 text-secondary hover:text-primary hover:border-primary/40 transition-colors"
-                aria-label="Copiar link do post"
+                aria-label="Compartilhar ou copiar link do post"
               >
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 COPIAR_LINK
@@ -381,15 +382,40 @@ const articleJsonLd = {
     });
   });
 
-  // ----- Copiar link do post -----
-  const shareCopy = document.getElementById('share-copy-link');
+  // ----- Compartilhar / copiar link do post -----
+  const shareCopy = document.getElementById('share-copy-link') as HTMLButtonElement | null;
   if (shareCopy) {
+    const url   = shareCopy.dataset.url   ?? location.href;
+    const title = shareCopy.dataset.title ?? document.title;
+
+    // Mostra label adequada já no carregamento
+    if (typeof navigator.share === 'function') {
+      shareCopy.textContent = 'COMPARTILHAR';
+    }
+
     shareCopy.addEventListener('click', async () => {
-      const url = (shareCopy as HTMLElement).dataset.url ?? location.href;
+      // Tenta Web Share API nativa (mobile / browsers suportados)
+      if (typeof navigator.share === 'function') {
+        try {
+          await navigator.share({ title, url });
+          return;
+        } catch (err) {
+          // Usuário cancelou o share sheet — não faz nada
+          if ((err as DOMException).name === 'AbortError') return;
+          // Qualquer outro erro: cai para clipboard abaixo
+        }
+      }
+      // Fallback: clipboard
       try {
         await navigator.clipboard.writeText(url);
       } catch {
-        /* fallback: ignore */
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        Object.assign(ta.style, { position: 'fixed', opacity: '0' });
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
       }
       const original = shareCopy.textContent;
       shareCopy.textContent = 'COPIADO!';

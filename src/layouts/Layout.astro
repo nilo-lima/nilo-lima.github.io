@@ -1,9 +1,5 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/700.css';
+// Fontes self-hosted em public/fonts/ com URLs estáveis para preload
 
 interface Props {
 	title: string;
@@ -80,6 +76,10 @@ const personJsonLd = {
 		<link rel="alternate" hreflang="en" href={enHref} />
 		<link rel="alternate" hreflang="x-default" href={ptHref} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<!-- Preload fontes críticas — elimina FOUT na Navbar e labels mono -->
+		<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-400-normal.woff2" crossorigin="anonymous" />
+		<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-latin-400-normal.woff2" crossorigin="anonymous" />
 		<link rel="alternate" type="application/rss+xml" title="Nilo Lima Jr — Blog" href="/rss.xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -144,6 +144,48 @@ const personJsonLd = {
 			↑
 		</button>
 		<style is:global>
+			/* ── Fontes self-hosted (stable URLs em /fonts/) ─────────────────── */
+			@font-face {
+				font-family: 'Inter';
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			@font-face {
+				font-family: 'Inter';
+				font-style: normal;
+				font-weight: 600;
+				font-display: swap;
+				src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			@font-face {
+				font-family: 'Inter';
+				font-style: normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			@font-face {
+				font-family: 'JetBrains Mono';
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url('/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			@font-face {
+				font-family: 'JetBrains Mono';
+				font-style: normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url('/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			/* ─────────────────────────────────────────────────────────────────── */
 			:root {
 				color-scheme: dark;
 			}

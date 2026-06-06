@@ -13,6 +13,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate:og": "node scripts/generate-og.mjs",
+    "generate:icons": "node scripts/generate-icons.mjs",
     "sync:certs": "node scripts/sync-drive-certs.mjs"
   },
   "devDependencies": {
