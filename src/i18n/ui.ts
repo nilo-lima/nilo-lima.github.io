@@ -112,6 +112,7 @@ export const ui = {
       titleHighlight: 'eficiência tecnológica?',
       lead: 'Vamos conversar sobre liderança técnica, gestão de TI e como escalar times e infraestruturas com eficiência. Aberto a novas conexões e parcerias.',
       cvLabel: 'CURRÍCULOS',
+      cvLead: 'Versões focadas por área de atuação. Escolha o perfil mais alinhado à sua necessidade.',
       cvItems: [
         { label: 'GESTÃO',      file: '/curriculo-gestao.pdf',      description: 'Liderança de TI, equipes e governança corporativa.' },
         { label: 'INFRA',       file: '/curriculo-infra.pdf',       description: 'Redes, servidores, segurança e infraestrutura on-premise.' },
@@ -225,6 +226,7 @@ export const ui = {
       titleHighlight: 'technological efficiency?',
       lead: "Let's talk about technical leadership, IT management and how to scale teams and infrastructures with efficiency. Open to new connections and partnerships.",
       cvLabel: 'RÉSUMÉS',
+      cvLead: 'Role-focused versions of my résumé. Pick the profile that best fits your needs.',
       cvItems: [
         { label: 'MANAGEMENT',  file: '/curriculo-gestao.pdf',      description: 'IT leadership, team management and corporate governance.' },
         { label: 'INFRA',       file: '/curriculo-infra.pdf',       description: 'Networks, servers, security and on-premise infrastructure.' },

@@ -18,8 +18,9 @@ const sectionId = lang === 'en' ? 'contact' : 'contato';
     <p class="text-secondary text-lg max-w-2xl">
       {s.lead}
     </p>
-    <div class="pt-12 border-t border-primary/10">
-      <p class="text-[10px] font-mono text-primary/50 uppercase tracking-[0.2em] mb-6">{s.cvLabel}</p>
+    <div class="pt-12 border-t border-primary/20">
+      <p class="text-xs font-mono text-primary tracking-[0.2em] uppercase mb-2">{s.cvLabel}</p>
+      <p class="text-secondary text-sm mb-8">{s.cvLead}</p>
       <div class="grid sm:grid-cols-2 gap-4">
         {s.cvItems.map(cv => (
           <a
