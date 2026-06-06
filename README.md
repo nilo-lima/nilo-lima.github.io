@@ -21,13 +21,19 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 ## ✨ Recursos
 
 - **Bilíngue PT-BR / EN** — alternância via navbar, i18n centralizado em `src/i18n/ui.ts`
-- **Blog** com paginação (6 posts/página), filtro por tag, tempo de leitura e RSS feed em `/rss.xml`
-- **Projetos** via Content Collections com grid, filtro por tag e badge de destaque
+- **Blog** com paginação (6 posts/página), filtro por tag clicável, tempo de leitura, prev/next, posts relacionados e RSS em `/rss.xml`
+- **Syntax highlighting** Shiki (`github-dark`) e botão COPIAR em todos os code blocks do blog
+- **Barra de progresso de leitura** e share buttons (copiar link + LinkedIn) nos posts individuais
+- **Busca full-text** Pagefind em `/busca` com UI dark — atalho global `Ctrl+K`; widget embutido na 404
+- **Páginas de tags** em `/tags/` (índice) e `/tags/[tag]/` (posts filtrados)
+- **Projetos** via Content Collections — lista vertical com filtro por tag e badge de destaque
 - **Certificações** com cartões de altura uniforme e links para Credly, Microsoft Learn e Accredible
-- **Página `/certificados`** com ~185 certificados de cursos organizados por tema, thumbnails geradas via Google Drive API e sincronização automática no deploy
-- **Currículos para download** (Gestão, Infra, Sistemas, DevOps/Cloud) na seção Contato
-- **OG image** 1200×630 gerada estaticamente para compartilhamento social
-- **SEO completo** — canonical, hreflang, JSON-LD Person, Open Graph, Twitter Cards
+- **Página `/certificados`** com ~185 certificados organizados por tema, thumbnails via Google Drive API
+- **Currículos para download** (Gestão, Infra, Sistemas, DevOps/Cloud) em cards 2×2 com descrição
+- **Página `/now`** — foco atual, aprendizado e stack do momento
+- **OG images dinâmicas** por post, por página e por tag (1200×630, geradas com `sharp` no build)
+- **SEO completo** — canonical, hreflang, JSON-LD Person + TechArticle + Breadcrumb, Open Graph, Twitter Cards
+- **Analytics** Goatcounter — privacy-first, sem cookies, LGPD-friendly
 - **Acessibilidade** — skip link, `aria-expanded`, `prefers-reduced-motion`, `:focus-visible`
 - **Fontes self-hosted** via `@fontsource` (sem requisições ao Google)
 - **Deploy automático** via GitHub Actions para GitHub Pages
@@ -58,12 +64,14 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 ## 🚀 Rodar localmente
 
 ```bash
-npm install
-npm run dev           # http://localhost:4321 — hot reload
-npm run build         # gera dist/ para validar o build
-npm run preview       # serve dist/ localmente
-npm run sync:certs    # sincroniza certificados do Google Drive (requer credenciais)
-npm run generate:og   # regenera public/og.png (1200×630)
+npm install                # após clonar
+npm run dev                # http://localhost:4321 — hot reload
+npm run build              # OG posts → OG pages → astro build → pagefind
+npm run preview            # serve dist/ localmente
+npm run generate:og        # regenera public/og.png (home)
+npm run generate:og-posts  # regenera OG de posts → public/og/posts/
+npm run generate:og-pages  # regenera OG de páginas e tags → public/og/pages/
+npm run sync:certs         # sincroniza certificados do Google Drive (requer credenciais)
 ```
 
 ---
@@ -75,15 +83,19 @@ npm run generate:og   # regenera public/og.png (1200×630)
 
 | Rota | Descrição |
 |------|-----------|
-| `/` | Home PT-BR (Hero, Sobre, Tech Stack, Certificações, Projetos, Experiência, Contato) |
+| `/` | Home PT-BR (Hero, Sobre, Tech Stack, Certificações, Projetos, Experiência, Vamos Conversar) |
 | `/en/` | Espelho EN via i18n manual |
-| `/projetos/` | Grid completo de projetos com filtro por tag |
-| `/en/projects/` | Versão EN do grid de projetos |
+| `/projetos/` | Lista completa de projetos com filtro por tag |
+| `/en/projects/` | Versão EN da lista de projetos |
 | `/blog/` | Listagem paginada de posts com filtro por tag |
-| `/blog/<slug>/` | Post individual em Markdown |
+| `/blog/<slug>/` | Post individual — syntax highlighting, progress bar, share buttons, prev/next |
+| `/tags/` | Índice de todas as tags com contagem de posts |
+| `/tags/<tag>/` | Posts filtrados por tag |
+| `/busca/` | Busca full-text Pagefind (atalho Ctrl+K) |
+| `/now/` | Página /now — foco atual, aprendizado e stack |
 | `/certificados/` | ~185 certificados de cursos organizados em 17 grupos temáticos |
 | `/rss.xml` | Feed RSS do blog |
-| `/404.html` | Página de erro customizada |
+| `/404.html` | Página de erro com busca Pagefind embutida |
 
 </details>
 
@@ -176,9 +188,12 @@ npm run generate:og
 ## 🚢 Deploy
 
 Qualquer push para `main` aciona o workflow em `.github/workflows/deploy.yml`, que executa em sequência:
-1. **Sync de certificados** — `node scripts/sync-drive-certs.mjs` (requer o secret `GDRIVE_CREDENTIALS` configurado no repositório)
-2. **Build** — `npm run build`
-3. **Publicação** — GitHub Pages
+1. **Sync de certificados** — `node scripts/sync-drive-certs.mjs` (requer o secret `GDRIVE_CREDENTIALS`)
+2. **OG posts** — `node scripts/generate-og-posts.mjs` (imagens 1200×630 por post)
+3. **OG pages** — `node scripts/generate-og-pages.mjs` (imagens por página e tag)
+4. **Build Astro** — `astro build`
+5. **Indexação Pagefind** — `npx pagefind --site dist`
+6. **Publicação** — GitHub Pages
 
 As thumbnails da página `/certificados` são baixadas automaticamente via Google Drive API a cada deploy e não ficam versionadas no repositório.
 
