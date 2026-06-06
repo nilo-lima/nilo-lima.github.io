@@ -23,7 +23,7 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 - **Bilíngue PT-BR / EN** — alternância via navbar, i18n centralizado em `src/i18n/ui.ts`
 - **Blog** com paginação (6 posts/página), filtro por tag clicável, tempo de leitura, prev/next, posts relacionados e RSS em `/rss.xml`
 - **Syntax highlighting** Shiki (`github-dark`) e botão COPIAR em todos os code blocks do blog
-- **Barra de progresso de leitura** e share buttons (copiar link + LinkedIn) nos posts individuais
+- **Barra de progresso de leitura** e share buttons nos posts — Web Share API nativa (mobile) com fallback para clipboard
 - **Busca full-text** Pagefind em `/busca` com UI dark — atalho global `Ctrl+K`; widget embutido na 404
 - **Páginas de tags** em `/tags/` (índice) e `/tags/[tag]/` (posts filtrados)
 - **Projetos** via Content Collections — lista vertical com filtro por tag e badge de destaque
@@ -31,12 +31,15 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 - **Página `/certificados`** com ~185 certificados organizados por tema, thumbnails via Google Drive API
 - **Currículos para download** (Gestão, Infra, Sistemas, DevOps/Cloud) em cards 2×2 com descrição
 - **Página `/now`** — foco atual, aprendizado e stack do momento
-- **Página `/uses`** — hardware, editor, ferramentas cloud & IA (inspirado em uses.tech)
-- **OG images dinâmicas** por post, por página e por tag (1200×630, geradas com `sharp` no build)
+- **Página `/uses`** e **`/en/uses`** — hardware, editor, ferramentas cloud & IA (inspirado em uses.tech)
+- **Páginas `/en/now`** e **`/en/uses`** — versões EN de /now e /uses; footer lang-aware serve a rota correta por idioma
+- **PWA instalável** — `site.webmanifest` + ícones 192/512 permitem adicionar ao homescreen mobile
+- **Font preload** — woff2 self-hosted em `public/fonts/` com `<link rel="preload">` para Inter e JetBrains Mono elimina FOUT
+- **OG images dinâmicas** por post, por página e por tag — PT e EN (1200×630, geradas com `sharp` no build)
 - **SEO completo** — canonical, hreflang, JSON-LD Person + TechArticle + Breadcrumb, Open Graph, Twitter Cards
 - **Analytics** Goatcounter — privacy-first, sem cookies, LGPD-friendly
 - **Acessibilidade** — skip link, `aria-expanded`, `prefers-reduced-motion`, `:focus-visible`
-- **Fontes self-hosted** via `@fontsource` (sem requisições ao Google)
+- **Fontes self-hosted** em `public/fonts/` — woff2 com URLs estáveis, `font-display: swap`, sem requisições externas
 - **Deploy automático** via GitHub Actions para GitHub Pages
 
 ---
@@ -72,6 +75,7 @@ npm run preview            # serve dist/ localmente
 npm run generate:og        # regenera public/og.png (home)
 npm run generate:og-posts  # regenera OG de posts → public/og/posts/
 npm run generate:og-pages  # regenera OG de páginas e tags → public/og/pages/
+npm run generate:icons     # regenera public/icon-192.png e icon-512.png (PWA)
 npm run sync:certs         # sincroniza certificados do Google Drive (requer credenciais)
 ```
 
@@ -93,8 +97,10 @@ npm run sync:certs         # sincroniza certificados do Google Drive (requer cre
 | `/tags/` | Índice de todas as tags com contagem de posts |
 | `/tags/<tag>/` | Posts filtrados por tag |
 | `/busca/` | Busca full-text Pagefind (atalho Ctrl+K) |
-| `/now/` | Página /now — foco atual, aprendizado e stack |
-| `/uses/` | Página /uses — hardware, editor, ferramentas cloud & IA |
+| `/now/` | Página /now — foco atual, aprendizado e stack (PT) |
+| `/en/now/` | Mirror EN de /now |
+| `/uses/` | Página /uses — hardware, editor, ferramentas cloud & IA (PT) |
+| `/en/uses/` | Mirror EN de /uses |
 | `/certificados/` | ~185 certificados de cursos organizados em 17 grupos temáticos |
 | `/rss.xml` | Feed RSS do blog |
 | `/404.html` | Página de erro com busca Pagefind embutida |
