@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar.astro';
 ---
 <Layout title="404 · Rota não encontrada · Nilo Lima Jr" description="Página não encontrada no portfólio de Nilo Lima Jr.">
   <Navbar />
-  <main class="min-h-[80vh] flex items-center px-6">
+  <main id="main" data-pagefind-ignore="all" class="min-h-[80vh] flex items-center px-6">
     <section class="max-w-5xl mx-auto w-full pt-32 pb-16">
       <div class="space-y-8">
         <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">ERR: ROUTE_NOT_FOUND</p>
@@ -18,7 +18,7 @@ hint: a rota solicitada não existe neste portfolio.
           404: <span class="text-primary italic">rota não encontrada</span>
         </h1>
         <p class="text-secondary text-lg max-w-2xl leading-relaxed">
-          A página que você procurou não está aqui. Pode ter sido movida ou nunca ter existido. Reposicione o cursor com os atalhos abaixo.
+          A página que você procurou não está aqui. Pode ter sido movida ou nunca ter existido. Use a busca abaixo ou reposicione o cursor com os atalhos.
         </p>
         <div class="flex flex-wrap gap-4 pt-4">
           <a href="/" class="text-sm font-mono text-primary border border-primary/40 hover:border-primary px-4 py-2 transition-colors">
@@ -31,7 +31,63 @@ hint: a rota solicitada não existe neste portfolio.
             ABRIR_GITHUB
           </a>
         </div>
+
+        <!-- Busca inline -->
+        <div class="pt-8 border-t border-primary/10">
+          <p class="text-[10px] font-mono text-primary/50 uppercase tracking-[0.2em] mb-6">// BUSCA_NO_PORTFOLIO</p>
+          <div id="search-404"></div>
+        </div>
       </div>
     </section>
   </main>
 </Layout>
+
+<style is:global>
+  #search-404 {
+    --pagefind-ui-scale: 0.85;
+    --pagefind-ui-primary: #38BDF8;
+    --pagefind-ui-text: #94A3B8;
+    --pagefind-ui-background: #050505;
+    --pagefind-ui-border: rgba(56, 189, 248, 0.15);
+    --pagefind-ui-tag: rgba(56, 189, 248, 0.08);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 4px;
+    --pagefind-ui-font: 'JetBrains Mono', monospace;
+  }
+  #search-404 .pagefind-ui__search-input {
+    background: rgba(255,255,255,0.03) !important;
+    color: #E2E8F0 !important;
+  }
+  #search-404 .pagefind-ui__result-link { color: #38BDF8 !important; }
+  #search-404 .pagefind-ui__result-excerpt { color: #94A3B8 !important; }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const el = document.getElementById('search-404');
+    if (!el) return;
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = function () {
+      new PagefindUI({
+        element: '#search-404',
+        showSubResults: false,
+        translations: {
+          placeholder: 'Buscar no portfólio...',
+          zero_results: 'Nenhum resultado para [SEARCH_TERM]',
+        },
+      });
+    };
+    script.onerror = function () {
+      el.innerHTML =
+        '<p class="text-secondary text-sm font-mono">Índice de busca indisponível. Execute <code class="text-primary">npm run build</code> primeiro.</p>';
+    };
+    document.head.appendChild(script);
+  });
+</script>

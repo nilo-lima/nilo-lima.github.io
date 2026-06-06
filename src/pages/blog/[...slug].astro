@@ -58,7 +58,7 @@ const articleJsonLd = {
   inLanguage: 'pt-BR',
 };
 ---
-<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description} articleJsonLd={articleJsonLd}>
+<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description} ogImage={`/og/posts/${post.slug}.png`} articleJsonLd={articleJsonLd}>
   <Navbar />
   <main id="main">
     <div class="px-6">
