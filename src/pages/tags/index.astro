@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'pt-BR' as const;
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+const tagMap = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagMap.set(tag, (tagMap.get(tag) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagMap.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'pt-BR'));
+---
+<Layout title="Tags · Blog · Nilo Lima Jr" description="Todos os temas abordados no blog — navegue por tecnologia." lang={lang}>
+  <Navbar lang={lang} />
+  <main id="main" class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
+
+    <section class="pb-10 border-b border-primary/10">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: TAGS_INDEX</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4 max-w-3xl">
+        Tags <span class="text-primary italic">& temas</span>
+      </h1>
+      <p class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest mt-3">{tags.length} tags · {posts.length} posts</p>
+    </section>
+
+    <ul class="mt-10 divide-y divide-primary/10">
+      {tags.map(([tag, count]) => (
+        <li>
+          <a
+            href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
+            class="group flex items-baseline justify-between py-4 -mx-2 px-2 hover:bg-primary/[0.03] transition-colors"
+          >
+            <span class="text-base font-bold text-accent group-hover:text-primary transition-colors">
+              #{tag}
+            </span>
+            <span class="text-[10px] font-mono text-secondary/50 shrink-0">
+              {count} {count === 1 ? 'post' : 'posts'} →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="pt-8 border-t border-primary/5 flex justify-center text-xs font-mono mt-4">
+      <a href="/blog" class="text-primary hover:underline transition-colors">← voltar ao blog</a>
+    </div>
+
+  </main>
+</Layout>

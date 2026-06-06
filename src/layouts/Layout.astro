@@ -10,6 +10,7 @@ interface Props {
 	description?: string;
 	ogImage?: string;
 	lang?: 'pt-BR' | 'en';
+	articleJsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
 	description,
 	ogImage = "/og.png",
 	lang = 'pt-BR',
+	articleJsonLd,
 } = Astro.props;
 
 const defaultDescription = lang === 'en'
@@ -98,6 +100,10 @@ const personJsonLd = {
 		<meta name="twitter:image:alt" content="Nilo Lima Jr — Gestor de TI & Especialista DevOps · Cloud · IA" />
 		<!-- JSON-LD Person -->
 		<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+		<!-- JSON-LD Article (posts individuais) -->
+		{articleJsonLd && (
+			<script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+		)}
 		<!-- Goatcounter analytics — privacy-first, sem cookies, LGPD-friendly -->
 		<!-- Criar conta em goatcounter.com com código "nilo-lima" se ainda não existir -->
 		<script data-goatcounter="https://nilo-lima.goatcounter.com/count"
@@ -109,6 +115,17 @@ const personJsonLd = {
 		</a>
 		<div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.03)_0,transparent_50%)]"></div>
 		<slot />
+		<footer data-pagefind-ignore="all" class="border-t border-primary/5 py-6 px-6 mt-auto">
+			<div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-4">
+				<div class="flex flex-wrap items-center gap-5 text-[11px] font-mono text-secondary/50">
+					<a href="https://www.linkedin.com/in/nilolima/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors uppercase tracking-widest">LinkedIn</a>
+					<a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors uppercase tracking-widest">GitHub</a>
+					<a href="https://www.credly.com/users/nilo-lima-jr/badges" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors uppercase tracking-widest">Credly</a>
+					<a href="/rss.xml" class="hover:text-primary transition-colors uppercase tracking-widest">RSS</a>
+				</div>
+				<span class="text-[11px] font-mono text-secondary/30">© {new Date().getFullYear()} Nilo Lima Jr</span>
+			</div>
+		</footer>
 		<button
 			id="back-to-top"
 			aria-label="Voltar ao topo"

@@ -42,8 +42,23 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
 
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 const hasToc = tocHeadings.length >= 4;
+
+const siteUrl = 'https://nilo-lima.github.io';
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { '@type': 'Person', name: 'Nilo Lima Jr', url: siteUrl },
+  publisher: { '@type': 'Person', name: 'Nilo Lima Jr', url: siteUrl },
+  keywords: post.data.tags.join(', '),
+  url: `${siteUrl}/blog/${post.slug}/`,
+  inLanguage: 'pt-BR',
+};
 ---
-<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description}>
+<Layout title={`${post.data.title} · Blog · Nilo Lima Jr`} description={post.data.description} articleJsonLd={articleJsonLd}>
   <Navbar />
   <main id="main">
     <div class="px-6">

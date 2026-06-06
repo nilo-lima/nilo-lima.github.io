@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+  const tagMap = new Map<string, typeof posts>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const slug = tag.toLowerCase().replace(/\s+/g, '-');
+      if (!tagMap.has(slug)) tagMap.set(slug, []);
+      tagMap.get(slug)!.push(post);
+    }
+  }
+
+  return [...tagMap.entries()].map(([slug, tagPosts]) => ({
+    params: { tag: slug },
+    props: {
+      tagLabel: tagPosts[0].data.tags.find(
+        t => t.toLowerCase().replace(/\s+/g, '-') === slug
+      ) ?? slug,
+      posts: tagPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+interface Props {
+  tagLabel: string;
+  posts: Awaited<ReturnType<typeof getCollection<'blog'>>>;
+}
+
+const { tagLabel, posts } = Astro.props;
+const lang = 'pt-BR' as const;
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<Layout
+  title={`#${tagLabel} · Tags · Blog · Nilo Lima Jr`}
+  description={`Posts sobre ${tagLabel} — ${posts.length} ${posts.length === 1 ? 'resultado' : 'resultados'}.`}
+  lang={lang}
+>
+  <Navbar lang={lang} />
+  <main id="main" class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
+
+    <section class="pb-10 border-b border-primary/10">
+      <a href="/tags" class="text-xs font-mono text-secondary hover:text-primary transition-colors uppercase tracking-widest">&lt;- TODAS_AS_TAGS</a>
+      <p class="font-mono text-primary text-sm tracking-widest mt-6" aria-hidden="true">CAT: TAG</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4 max-w-3xl">
+        #{tagLabel}
+      </h1>
+      <p class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest mt-3">
+        {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+      </p>
+    </section>
+
+    <ul class="mt-10 space-y-4">
+      {posts.map(post => (
+        <li>
+          <a href={`/blog/${post.slug}/`} class="group flex items-baseline gap-4 p-5 bg-white/[0.03] border border-primary/10 hover:border-primary/25 transition-colors rounded-lg">
+            <time
+              datetime={post.data.pubDate.toISOString()}
+              class="text-[10px] font-mono text-secondary/60 uppercase tracking-widest shrink-0"
+            >
+              {formatDate(post.data.pubDate)}
+            </time>
+            <span class="text-sm font-bold text-accent group-hover:text-primary transition-colors flex-1 leading-snug line-clamp-1">
+              {post.data.title}
+            </span>
+            <span class="text-primary/50 group-hover:text-primary font-mono text-sm shrink-0 group-hover:translate-x-0.5 transition-transform">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </main>
+</Layout>
