@@ -55,44 +55,53 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
         ))}
       </div>
 
-      <!-- Projects grid -->
-      <div class="grid sm:grid-cols-2 gap-6" id="projects-grid">
+      <!-- Projects list -->
+      <ul class="space-y-4" id="projects-list">
         {projects.map(project => (
-          <div
-            class="project-card group p-6 border border-primary/10 hover:border-primary/30 transition-all flex flex-col gap-4 bg-primary/[0.02]"
+          <li
+            class="project-item"
             data-tags={project.data.tags.map(t => t.toLowerCase()).join(' ')}
           >
-            <div class="flex items-start justify-between gap-2">
-              <h2 class="text-base font-bold text-accent group-hover:text-primary transition-colors leading-snug">
-                {project.data.title}
+            <article class="group bg-white/[0.03] border border-primary/10 rounded-lg p-6 hover:border-primary/25 transition-colors">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                {project.data.pubDate && (
+                  <time datetime={project.data.pubDate.toISOString()} class="text-[10px] font-mono text-secondary uppercase tracking-widest">
+                    {project.data.pubDate.toLocaleDateString('en', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' })}
+                  </time>
+                )}
+                {project.data.pinned && (
+                  <span class="text-[10px] font-mono text-primary border border-primary/40 px-2 py-0.5 uppercase tracking-widest">
+                    ★ FEATURED
+                  </span>
+                )}
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-accent group-hover:text-primary transition-colors">
+                <a href={project.data.link} target="_blank" rel="noopener noreferrer">
+                  {project.data.title}
+                </a>
               </h2>
-              {project.data.pinned && (
-                <span class="text-[9px] font-mono text-primary border border-primary/40 px-2 py-0.5 shrink-0 mt-0.5">
-                  ★ FEATURED
-                </span>
-              )}
-            </div>
-            <p class="text-secondary text-sm leading-relaxed flex-1">
-              {project.data.description}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              {project.data.tags.map(tag => (
-                <span class="text-[10px] font-mono border border-primary/15 px-2 py-0.5 text-primary/60 uppercase tracking-wider">
-                  #{tag}
-                </span>
-              ))}
-            </div>
-            <a
-              href={project.data.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xs font-mono text-primary inline-flex items-center gap-1 hover:translate-x-1 transition-transform mt-auto"
-            >
-              OPEN_REPOSITORY -&gt;
-            </a>
-          </div>
+              <p class="text-secondary text-sm mt-3 leading-relaxed max-w-3xl">
+                {project.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                {project.data.tags.map(tag => (
+                  <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.data.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 mt-5 text-sm font-mono text-primary hover:translate-x-1 transition-transform"
+              >
+                OPEN_REPOSITORY -&gt;
+              </a>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <!-- Footer -->
       <div class="pt-12 border-t border-primary/5 text-sm font-mono text-secondary">
@@ -105,7 +114,7 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
 
 <script>
   const btns = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
-  const cards = document.querySelectorAll<HTMLElement>('.project-card');
+  const items = document.querySelectorAll<HTMLElement>('.project-item');
 
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -120,10 +129,10 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
       btn.classList.remove('border-primary/20', 'text-secondary');
       btn.setAttribute('aria-pressed', 'true');
 
-      cards.forEach(card => {
-        const tags = card.dataset.tags ?? '';
+      items.forEach(item => {
+        const tags = item.dataset.tags ?? '';
         const visible = selected === '*' || tags.split(' ').includes(selected.toLowerCase());
-        (card as HTMLElement).style.display = visible ? '' : 'none';
+        item.style.display = visible ? '' : 'none';
       });
     });
   });

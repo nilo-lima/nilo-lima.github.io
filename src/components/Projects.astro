@@ -19,45 +19,38 @@ const pinned = (await getCollection('projects', ({ data }) => data.pinned))
       <h2 class="text-xs font-mono text-primary tracking-[0.2em] uppercase">{s.tag}</h2>
       <p class="text-secondary text-sm mt-4 leading-relaxed">{s.lead}</p>
     </div>
-    <div class="space-y-12">
-      {pinned.map(project => (
-        <div class="group relative">
-          <div class="flex flex-col md:flex-row md:items-baseline gap-4 mb-4">
-            <h3 class="text-2xl font-bold text-accent group-hover:text-primary transition-colors">
-              {project.data.title}
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {project.data.tags.map(tag => (
-                <span class="text-[10px] font-mono border border-primary/20 px-2 py-0.5 text-primary/70">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <p class="text-secondary text-lg mb-6 leading-relaxed">
-            {project.data.description}
-          </p>
+    <ul class="divide-y divide-primary/10" role="list">
+      {pinned.map((project, i) => (
+        <li>
           <a
             href={project.data.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm font-mono text-primary inline-flex items-center gap-2 hover:translate-x-1 transition-transform"
+            class="group flex items-baseline gap-4 py-4 -mx-2 px-2 hover:bg-primary/[0.03] transition-colors"
           >
-            {s.cta} -&gt;
+            <span class="text-[10px] font-mono text-primary/30 w-5 shrink-0 tabular-nums">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span class="text-base font-bold text-accent group-hover:text-primary transition-colors flex-1 leading-snug">
+              {project.data.title}
+            </span>
+            <span class="hidden sm:block text-[10px] font-mono text-secondary/50 shrink-0 text-right">
+              {project.data.tags.slice(0, 3).join(' · ')}
+            </span>
+            <span class="text-primary/50 group-hover:text-primary font-mono text-sm shrink-0 group-hover:translate-x-0.5 transition-transform">
+              →
+            </span>
           </a>
-        </div>
+        </li>
       ))}
-      <div class="pt-4 border-t border-primary/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm font-mono">
-        <a
-          href={lang === 'en' ? '/en/projects/' : '/projetos'}
-          class="text-primary border border-primary/30 hover:border-primary px-4 py-2 transition-colors self-start"
-        >
-          {s.viewAll} -&gt;
-        </a>
-        <span class="text-secondary">
-          {s.allRepos} <a href="https://github.com/nilo-lima" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">github.com/nilo-lima</a>
-        </span>
-      </div>
-    </div>
+    </ul>
+  </div>
+  <div class="pt-6 border-t border-primary/5 flex justify-center text-xs font-mono">
+    <a
+      href={lang === 'en' ? '/en/projects/' : '/projetos'}
+      class="text-primary hover:underline transition-colors"
+    >
+      {s.viewAll} -&gt;
+    </a>
   </div>
 </section>

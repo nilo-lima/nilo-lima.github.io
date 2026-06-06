@@ -20,6 +20,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    pubDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
     link: z.string().url(),
     pinned: z.boolean().default(false),

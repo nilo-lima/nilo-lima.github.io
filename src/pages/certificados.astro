@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
 import rawData from '../data/certificados.json';
 
 type CertFile  = { id: string; name: string };
@@ -15,7 +16,8 @@ function toSlug(str: string) {
 }
 ---
 <Layout title={title} description={description} lang="pt-BR">
-  <main id="main" class="py-16 px-6 max-w-5xl mx-auto">
+  <Navbar lang="pt-BR" />
+  <main id="main" class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
 
     <div class="mb-10">
       <p class="text-xs font-mono text-primary tracking-[0.2em] uppercase">// Cursos &amp; Certificados</p>
