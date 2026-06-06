@@ -41,9 +41,10 @@ function buildSvg(label, title, subtitle) {
 
 // ── Páginas estáticas ──────────────────────────────────────────────────
 const staticPages = [
-  { slug: 'blog',     label: 'CAT: BLOG_INDEX',    title: 'Blog',     subtitle: 'DevOps · Cloud · IA aplicada a infraestrutura' },
-  { slug: 'projetos', label: 'CAT: PROJECTS_INDEX', title: 'Projetos', subtitle: 'Infraestrutura reprodutível, automação & IaC'   },
-  { slug: 'now',      label: 'CAT: NOW',            title: '/now',     subtitle: 'O que estou trabalhando atualmente'              },
+  { slug: 'blog',     label: 'CAT: BLOG_INDEX',    title: 'Blog',     subtitle: 'DevOps · Cloud · IA aplicada a infraestrutura'  },
+  { slug: 'projetos', label: 'CAT: PROJECTS_INDEX', title: 'Projetos', subtitle: 'Infraestrutura reprodutível, automação & IaC'    },
+  { slug: 'now',      label: 'CAT: NOW',            title: '/now',     subtitle: 'O que estou trabalhando atualmente'               },
+  { slug: 'uses',     label: 'CAT: USES',           title: '/uses',    subtitle: 'Stack, hardware e ferramentas de trabalho'        },
 ];
 
 for (const page of staticPages) {

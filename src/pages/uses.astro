@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const lang = 'pt-BR' as const;
+const updatedAt = '2026-06-06';
+const siteUrl = 'https://nilo-lima.github.io';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl + '/' },
+    { '@type': 'ListItem', position: 2, name: '/uses', item: siteUrl + '/uses/' },
+  ],
+};
+---
+<Layout
+  title="/uses · Nilo Lima Jr"
+  description="Hardware, ferramentas, editor e stack que uso no dia a dia como Gestor de TI e especialista DevOps/Cloud."
+  ogImage="/og/pages/uses.png"
+  lang={lang}
+  breadcrumbJsonLd={breadcrumbJsonLd}
+>
+  <Navbar lang={lang} />
+  <main id="main" data-pagefind-ignore="all" class="pt-32 pb-16 px-6 max-w-3xl mx-auto">
+
+    <section class="pb-10 border-b border-primary/10">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: USES</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4">/uses</h1>
+      <p class="text-secondary text-sm font-mono mt-3">
+        Atualizado em <time datetime={updatedAt}>junho 2026</time> · Stack, hardware e ferramentas do dia a dia
+      </p>
+    </section>
+
+    <div class="mt-12 space-y-14">
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Hardware</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'Workstation principal', value: 'Desktop Linux — processador AMD Ryzen, 32 GB RAM, SSD NVMe' },
+            { label: 'Notebook', value: 'Notebook corporativo para mobilidade e reuniões híbridas' },
+            { label: 'Monitor', value: 'Monitor 27" IPS, resolução QHD — foco em legibilidade de código e dashboards' },
+            { label: 'Periféricos', value: 'Teclado mecânico switches lineares, mouse ergonômico, headset com cancelamento de ruído' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Sistema operacional & terminal</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'OS', value: 'Ubuntu LTS — estabilidade para ambientes de infraestrutura; WSL2 no notebook corporativo' },
+            { label: 'Shell', value: 'Bash com aliases extensivos e funções para automação de pipelines e cloud CLI' },
+            { label: 'Terminal', value: 'Terminal padrão + tmux para sessões persistentes e painéis simultâneos de logs' },
+            { label: 'Prompt', value: 'Starship — exibe branch git, contexto Kubernetes ativo e duração de comando' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Editor & IDE</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'Editor principal', value: 'Visual Studio Code — extensões para Terraform HCL, Docker, Kubernetes, Python e YAML' },
+            { label: 'Agente de código', value: 'Claude Code CLI (Anthropic) — pair programming, refatoração e geração de IaC' },
+            { label: 'Edição rápida', value: 'Vim / Nano para edições diretas em servidores remotos via SSH' },
+            { label: 'Tema', value: 'Dark mode profundo com fonte JetBrains Mono — zero fadiga visual em sessões longas' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// Cloud & DevOps</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {[
+            'AWS CLI', 'Azure CLI', 'gcloud CLI',
+            'Terraform', 'Ansible', 'Helm',
+            'kubectl', 'Docker', 'Podman',
+            'GitHub Actions', 'ArgoCD', 'Prometheus',
+            'Grafana', 'OpenTelemetry', 'Trivy',
+          ].map(tool => (
+            <span class="text-[10px] font-mono border border-primary/20 px-2.5 py-1 text-secondary uppercase tracking-widest">
+              {tool}
+            </span>
+          ))}
+        </div>
+        <ul class="space-y-3 text-secondary text-sm leading-relaxed">
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">Terraform</strong> para IaC reprodutível em AWS e Azure — módulos versionados, state remoto no S3 + DynamoDB.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">GitHub Actions</strong> como plataforma CI/CD principal — workflows reutilizáveis com ambientes de aprovação.
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-mono shrink-0 mt-0.5">→</span>
+            <strong class="text-accent font-normal">Prometheus + Grafana</strong> para observabilidade — dashboards de SLIs/SLOs e alertas via Alertmanager.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-5">// IA & produtividade</p>
+        <ul class="space-y-4">
+          {[
+            { label: 'LLM principal', value: 'Claude (Anthropic) — raciocínio técnico, revisão de IaC, geração de runbooks e documentação' },
+            { label: 'CLI de IA', value: 'Claude Code e Gemini CLI — copilots no terminal integrados ao fluxo de infraestrutura' },
+            { label: 'Gestão de tarefas', value: 'GitHub Issues + Projects para backlog pessoal e acompanhamento de sprints' },
+            { label: 'Notas & docs', value: 'Markdown + Git — toda documentação técnica versionada no repositório do projeto' },
+            { label: 'Comunicação', value: 'Slack para times distribuídos; Microsoft Teams em ambientes corporativos' },
+          ].map(item => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-[10px] font-mono text-primary/60 uppercase tracking-widest shrink-0 min-w-[14ch]">{item.label}</span>
+              <span class="text-secondary text-sm leading-relaxed">{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="pt-10 border-t border-primary/10 flex flex-wrap justify-between items-end gap-4">
+        <div class="flex flex-wrap gap-4">
+          <a href="/now" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            /now →
+          </a>
+          <a href="/projetos" class="text-xs font-mono text-secondary border border-primary/20 px-3 py-1.5 hover:text-primary hover:border-primary/40 transition-colors">
+            PROJETOS →
+          </a>
+        </div>
+        <p class="text-[10px] font-mono text-secondary/40">
+          Inspirado em <a href="https://uses.tech" target="_blank" rel="noopener noreferrer" class="hover:text-primary/60 transition-colors">uses.tech</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+</Layout>

@@ -35,6 +35,12 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: false
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

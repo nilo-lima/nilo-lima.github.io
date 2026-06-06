@@ -31,6 +31,7 @@ Estética **Astro-Terminal**: dark mode profundo, tipografia mono, paleta `#0505
 - **Página `/certificados`** com ~185 certificados organizados por tema, thumbnails via Google Drive API
 - **Currículos para download** (Gestão, Infra, Sistemas, DevOps/Cloud) em cards 2×2 com descrição
 - **Página `/now`** — foco atual, aprendizado e stack do momento
+- **Página `/uses`** — hardware, editor, ferramentas cloud & IA (inspirado em uses.tech)
 - **OG images dinâmicas** por post, por página e por tag (1200×630, geradas com `sharp` no build)
 - **SEO completo** — canonical, hreflang, JSON-LD Person + TechArticle + Breadcrumb, Open Graph, Twitter Cards
 - **Analytics** Goatcounter — privacy-first, sem cookies, LGPD-friendly
@@ -93,6 +94,7 @@ npm run sync:certs         # sincroniza certificados do Google Drive (requer cre
 | `/tags/<tag>/` | Posts filtrados por tag |
 | `/busca/` | Busca full-text Pagefind (atalho Ctrl+K) |
 | `/now/` | Página /now — foco atual, aprendizado e stack |
+| `/uses/` | Página /uses — hardware, editor, ferramentas cloud & IA |
 | `/certificados/` | ~185 certificados de cursos organizados em 17 grupos temáticos |
 | `/rss.xml` | Feed RSS do blog |
 | `/404.html` | Página de erro com busca Pagefind embutida |
@@ -193,7 +195,8 @@ Qualquer push para `main` aciona o workflow em `.github/workflows/deploy.yml`, q
 3. **OG pages** — `node scripts/generate-og-pages.mjs` (imagens por página e tag)
 4. **Build Astro** — `astro build`
 5. **Indexação Pagefind** — `npx pagefind --site dist`
-6. **Publicação** — GitHub Pages
+6. **Lighthouse CI** — `treosh/lighthouse-ci-action@v12` (falha se Performance < 80)
+7. **Publicação** — GitHub Pages
 
 As thumbnails da página `/certificados` são baixadas automaticamente via Google Drive API a cada deploy e não ficam versionadas no repositório.
 
