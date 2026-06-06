@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const lang = 'pt-BR' as const;
+---
+<Layout title="Busca · Nilo Lima Jr" description="Busca no portfólio de Nilo Lima Jr" lang={lang}>
+  <Navbar lang={lang} />
+  <main id="main" data-pagefind-ignore="all" class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
+    <section class="pb-10 border-b border-primary/10">
+      <p class="font-mono text-primary text-sm tracking-widest" aria-hidden="true">CAT: SEARCH</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tighter text-accent mt-4 max-w-3xl">
+        Busca <span class="text-primary italic">no portfólio</span>
+      </h1>
+      <p class="text-secondary text-sm mt-4 leading-relaxed max-w-2xl">
+        Pesquise posts do blog, projetos e qualquer conteúdo publicado.
+      </p>
+    </section>
+    <div id="search" class="mt-10"></div>
+  </main>
+</Layout>
+
+<style is:global>
+  #search {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: #38BDF8;
+    --pagefind-ui-text: #94A3B8;
+    --pagefind-ui-background: #050505;
+    --pagefind-ui-border: rgba(56, 189, 248, 0.15);
+    --pagefind-ui-tag: rgba(56, 189, 248, 0.08);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 4px;
+    --pagefind-ui-font: 'JetBrains Mono', monospace;
+  }
+  .pagefind-ui__search-input {
+    background: rgba(255,255,255,0.03) !important;
+    color: #E2E8F0 !important;
+  }
+  .pagefind-ui__result-link {
+    color: #38BDF8 !important;
+  }
+  .pagefind-ui__result-excerpt {
+    color: #94A3B8 !important;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const el = document.getElementById('search');
+    if (!el) return;
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = function () {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        translations: {
+          placeholder: 'Buscar...',
+          zero_results: 'Nenhum resultado para [SEARCH_TERM]',
+        },
+      });
+    };
+    script.onerror = function () {
+      el.innerHTML =
+        '<p class="text-secondary text-sm font-mono mt-4">Índice de busca indisponível em modo de desenvolvimento. Execute <code class="text-primary">npm run build</code> primeiro.</p>';
+    };
+    document.head.appendChild(script);
+  });
+</script>

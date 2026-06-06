@@ -18,7 +18,7 @@ const navItems = [
   { name: s.nav.contact, href: s.nav.contactHref },
 ];
 ---
-<nav class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-primary/5">
+<nav class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-primary/5" data-pagefind-ignore="all">
   <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href={lang === 'en' ? '/en/' : '/'} class="text-primary font-mono text-sm font-bold tracking-tighter flex items-center gap-2" aria-label={lang === 'en' ? 'Go to home' : 'Ir para a página inicial'}>
       <span aria-hidden="true">♾️</span> NILO_LIMA_JR
@@ -29,6 +29,9 @@ const navItems = [
           {item.name}
         </a>
       ))}
+      <a href="/busca" aria-label="Buscar" class="text-secondary hover:text-primary transition-colors">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </a>
       <a
         href={s.nav.altLangHref}
         class="text-xs font-mono text-primary border border-primary/30 hover:border-primary px-2 py-1 transition-colors"
@@ -49,6 +52,9 @@ const navItems = [
           {item.name}
         </a>
       ))}
+      <a href="/busca" class="text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors font-medium">
+        Busca
+      </a>
       <a href={s.nav.altLangHref} class="text-xs font-mono text-primary border border-primary/30 px-2 py-1 self-start" hreflang={lang === 'en' ? 'pt-BR' : 'en'}>
         {s.nav.switchTo}
       </a>

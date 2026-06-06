@@ -80,14 +80,15 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
                   {project.data.title}
                 </a>
               </h2>
-              <p class="text-secondary text-sm mt-3 leading-relaxed max-w-3xl">
+              <p class="text-secondary text-sm mt-3 leading-relaxed max-w-3xl line-clamp-3">
                 {project.data.description}
               </p>
               <div class="flex flex-wrap gap-2 mt-4">
                 {project.data.tags.map(tag => (
-                  <span class="text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest">
-                    #{tag}
-                  </span>
+                  <button
+                    class="tag-filter text-[10px] font-mono border border-primary/10 px-2 py-0.5 text-secondary uppercase tracking-widest hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
+                    data-filter-tag={tag.toLowerCase()}
+                  >#{tag}</button>
                 ))}
               </div>
               <a
@@ -116,24 +117,32 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
   const btns = document.querySelectorAll<HTMLButtonElement>('.tag-btn');
   const items = document.querySelectorAll<HTMLElement>('.project-item');
 
+  function activateFilter(tag: string) {
+    btns.forEach(b => {
+      b.classList.remove('border-primary/40', 'text-primary', 'bg-primary/10');
+      b.classList.add('border-primary/20', 'text-secondary');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    const target = [...btns].find(b => b.dataset.tag === tag) ?? btns[0];
+    target.classList.add('border-primary/40', 'text-primary', 'bg-primary/10');
+    target.classList.remove('border-primary/20', 'text-secondary');
+    target.setAttribute('aria-pressed', 'true');
+
+    items.forEach(item => {
+      const tags = item.dataset.tags ?? '';
+      const visible = tag === '*' || tags.split(' ').includes(tag.toLowerCase());
+      item.style.display = visible ? '' : 'none';
+    });
+  }
+
   btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selected = btn.dataset.tag ?? '*';
+    btn.addEventListener('click', () => activateFilter(btn.dataset.tag ?? '*'));
+  });
 
-      btns.forEach(b => {
-        b.classList.remove('border-primary/40', 'text-primary', 'bg-primary/10');
-        b.classList.add('border-primary/20', 'text-secondary');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('border-primary/40', 'text-primary', 'bg-primary/10');
-      btn.classList.remove('border-primary/20', 'text-secondary');
-      btn.setAttribute('aria-pressed', 'true');
-
-      items.forEach(item => {
-        const tags = item.dataset.tags ?? '';
-        const visible = selected === '*' || tags.split(' ').includes(selected.toLowerCase());
-        item.style.display = visible ? '' : 'none';
-      });
+  document.querySelectorAll<HTMLButtonElement>('.tag-filter').forEach(tagBtn => {
+    tagBtn.addEventListener('click', () => {
+      activateFilter(tagBtn.dataset.filterTag ?? '*');
+      document.getElementById('tag-filters')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   });
 </script>
