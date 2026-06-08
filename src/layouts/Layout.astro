@@ -77,8 +77,9 @@ const personJsonLd = {
 		<link rel="alternate" hreflang="x-default" href={ptHref} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="manifest" href="/site.webmanifest" />
-		<!-- Preload fontes críticas — elimina FOUT na Navbar e labels mono -->
+		<!-- Preload fontes críticas — 400 (body) + 600 (hero h2 font-semibold = LCP element) -->
 		<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-400-normal.woff2" crossorigin="anonymous" />
+		<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin-600-normal.woff2" crossorigin="anonymous" />
 		<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-latin-400-normal.woff2" crossorigin="anonymous" />
 		<link rel="alternate" type="application/rss+xml" title="Nilo Lima Jr — Blog" href="/rss.xml" />
 		<meta name="generator" content={Astro.generator} />
@@ -110,10 +111,15 @@ const personJsonLd = {
 		{breadcrumbJsonLd && (
 			<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 		)}
-		<!-- Goatcounter analytics — privacy-first, sem cookies, LGPD-friendly -->
-		<!-- Criar conta em goatcounter.com com código "nilo-lima" se ainda não existir -->
-		<script data-goatcounter="https://nilo-lima.goatcounter.com/count"
-			async src="//gc.zgo.at/count.js"></script>
+		<!-- Goatcounter analytics — carregado após load para não impactar TBT -->
+		<script>
+			window.addEventListener('load', function() {
+				var s = document.createElement('script');
+				s.dataset.goatcounter = 'https://nilo-lima.goatcounter.com/count';
+				s.src = 'https://gc.zgo.at/count.js';
+				document.head.appendChild(s);
+			});
+		</script>
 	</head>
 	<body class="bg-background text-accent font-sans selection:bg-primary/30 selection:text-primary">
 		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-primary focus:text-background focus:px-3 focus:py-2 focus:font-mono focus:text-xs">

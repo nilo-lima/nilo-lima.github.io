@@ -1,7 +1,7 @@
 ---
 title: "Desafio 04 - NAT Gateway + ECS Privado (Formacao AWS Mai/2026)"
 description: "Como isolar containers ECS Fargate em subnets privadas e garantir saida de internet segura via NAT Gateway - tudo provisionado com Terraform."
-pubDate: "2026-06-08"
+pubDate: "2026-06-02"
 tags: ["aws", "nat-gateway", "ecs", "fargate", "terraform", "formacao-aws", "devops", "vpc"]
 source: "artigo"
 sourceUrl: "https://hotmart.com/pt-br/club/formacaoaws"
