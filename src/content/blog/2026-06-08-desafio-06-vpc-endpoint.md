@@ -3,7 +3,7 @@ title: "Desafio 06 - VPC Endpoint + SSM + EC2 Instance Connect (Formacao AWS Mai
 description: "Como acessei uma EC2 em subnet 100% privada sem NAT Gateway, sem IP publico e sem bastion, usando SSM Session Manager e EC2 Instance Connect Endpoint via VPC Endpoints."
 pubDate: "2026-06-08"
 tags: ["aws", "vpc-endpoint", "ssm", "ec2-instance-connect", "terraform", "formacao-aws"]
-source: "Formacao AWS 5.0 - Desafio Labs 2.0"
+source: "artigo"
 sourceUrl: "https://hotmart.com/pt-br/club/formacaoaws"
 heroImage: "/images/blog/desafio-06-vpc-endpoint.png"
 ---

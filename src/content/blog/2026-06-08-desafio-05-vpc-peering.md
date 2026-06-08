@@ -3,7 +3,7 @@ title: "Desafio 05 - VPC + VPC Peering multi-regiao (Formacao AWS Mai/2026)"
 description: "Como estabeleci comunicacao cross-region entre us-east-1 e us-east-2 via VPC Peering usando Terraform com dual-provider e validei com ICMP/SSH via IPs privados."
 pubDate: "2026-06-08"
 tags: ["aws", "vpc-peering", "terraform", "formacao-aws", "devops", "redes"]
-source: "Formacao AWS 5.0 - Desafio Labs 2.0"
+source: "artigo"
 sourceUrl: "https://hotmart.com/pt-br/club/formacaoaws"
 heroImage: "/images/blog/desafio-05-vpc-peering.png"
 ---
