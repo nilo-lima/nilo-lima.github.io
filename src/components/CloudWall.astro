@@ -11,6 +11,7 @@ const sectionId = lang === 'en' ? 'certifications' : 'certificacoes';
 const MS_LEARN_PROFILE = 'https://learn.microsoft.com/pt-br/users/nilolima-9821/';
 const CREDLY_PROFILE   = 'https://www.credly.com/users/nilo-lima-jr/badges';
 const ACCREDIBLE_PROFILE = 'https://www.credential.net/profile/nilohernandezdelimajunior896171/wallet';
+const AWS_SKILLBUILDER_PROFILE = 'https://skillsprofile.skillbuilder.aws/user/nilo-lima-jr/certification-badges';
 
 // Preencha aqui as certificações que quer destacar.
 // Formato: { name, issuer, year }
@@ -56,20 +57,26 @@ const certs: { name: string; issuer: string; year: string }[] = [
               </h3>
             </div>
           ))}
-          <div class="sm:col-span-2 lg:col-span-3 p-4 border border-dashed border-primary/20 flex flex-wrap items-center gap-3">
+          <div class="sm:col-span-2 lg:col-span-3 p-4 border border-dashed border-primary/20 flex flex-col items-center gap-3">
             <span class="text-secondary text-xs font-mono">{s.verifyLabel}</span>
-            <a href={CREDLY_PROFILE} target="_blank" rel="noopener noreferrer"
-               class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
-              Credly ↗
-            </a>
-            <a href={MS_LEARN_PROFILE} target="_blank" rel="noopener noreferrer"
-               class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
-              Microsoft Learn ↗
-            </a>
-            <a href={ACCREDIBLE_PROFILE} target="_blank" rel="noopener noreferrer"
-               class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
-              Accredible ↗
-            </a>
+            <div class="flex flex-wrap justify-center gap-3">
+              <a href={CREDLY_PROFILE} target="_blank" rel="noopener noreferrer"
+                 class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
+                Credly ↗
+              </a>
+              <a href={MS_LEARN_PROFILE} target="_blank" rel="noopener noreferrer"
+                 class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
+                Microsoft Learn ↗
+              </a>
+              <a href={ACCREDIBLE_PROFILE} target="_blank" rel="noopener noreferrer"
+                 class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
+                Accredible ↗
+              </a>
+              <a href={AWS_SKILLBUILDER_PROFILE} target="_blank" rel="noopener noreferrer"
+                 class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
+                AWS Skill Builder ↗
+              </a>
+            </div>
           </div>
           <div class="sm:col-span-2 lg:col-span-3 text-center py-3">
             <a href="/certificados" class="text-xs font-mono text-primary hover:underline tracking-widest uppercase">
