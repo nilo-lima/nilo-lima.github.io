@@ -564,6 +564,10 @@
         "name": "Data Storytelling e Visualização de Dados"
       },
       {
+        "id": "1HiSLEv0qS2N7FRWxzRopuKaJgskrMQLF",
+        "name": "Desenvolvimento de Software com IA: O Contexto como Fundamento do Desenvolvimento Moderno"
+      },
+      {
         "id": "1-prSVGt46P_DoMBjqaMl6fGrk5Q-48gr",
         "name": "Dominr_LLMs_com_LangChain"
       },
@@ -610,6 +614,10 @@
       {
         "id": "16N9GEEtpQyOr8292lOECao4IPz9dspfO",
         "name": "Programa de Compliance para Inteligência Artificial & Avaliação de Impacto de IA"
+      },
+      {
+        "id": "1imIy6U5uJKSaXs-ZrGBoOTBOADB_G4ju",
+        "name": "Segurança aplicada ao Vibecoding"
       }
     ]
   },
@@ -928,10 +936,6 @@
         "name": "Certificado_-_Nivelamento Hackers do Bem"
       },
       {
-        "id": "1zXx8LU_gC3bF7253imz6Sd-91wUWmEfV",
-        "name": "certificadoZWQzRGdiblgrZXAxcHQzZ0tYWEhRQT09"
-      },
-      {
         "id": "17ZG9Xu9PSOLDj-XD7QMlkpyjRDz08tR7",
         "name": "Certified Artificial Intelligence Security & Risk CAISR"
       },
@@ -940,8 +944,16 @@
         "name": "CIS Controls V 8.1 Foundation"
       },
       {
+        "id": "1zXx8LU_gC3bF7253imz6Sd-91wUWmEfV",
+        "name": "Como se Defender de Ameaças de SI"
+      },
+      {
         "id": "16ve2FClTmfjseai4dH7BqoRNvBzq0GhI",
         "name": "DESEC - Introdução ao Pentest na Prática Fev 2023"
+      },
+      {
+        "id": "1R9CbsmHoX2VTjLTOJaC7DnB0SIquHJks",
+        "name": "Ethical Hacker CISCO"
       },
       {
         "id": "1EGTruoY5z6ETz-Cf1ZP7O1j0arWxYui5",
