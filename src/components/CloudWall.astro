@@ -12,6 +12,8 @@ const MS_LEARN_PROFILE = 'https://learn.microsoft.com/pt-br/users/nilolima-9821/
 const CREDLY_PROFILE   = 'https://www.credly.com/users/nilo-lima-jr/badges';
 const ACCREDIBLE_PROFILE = 'https://www.credential.net/profile/nilohernandezdelimajunior896171/wallet';
 const AWS_SKILLBUILDER_PROFILE = 'https://skillsprofile.skillbuilder.aws/user/nilo-lima-jr/certification-badges';
+// Oracle não possui portal público de badges — página interna com os certificados verificáveis.
+const ORACLE_BADGES_PAGE = '/certificados/oracle';
 
 // Preencha aqui as certificações que quer destacar.
 // Formato: { name, issuer, year }
@@ -75,6 +77,10 @@ const certs: { name: string; issuer: string; year: string }[] = [
               <a href={AWS_SKILLBUILDER_PROFILE} target="_blank" rel="noopener noreferrer"
                  class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
                 AWS Skill Builder ↗
+              </a>
+              <a href={ORACLE_BADGES_PAGE}
+                 class="px-3 py-1 text-xs font-mono text-primary border border-primary/30 hover:border-primary hover:bg-primary/10 transition-all">
+                Oracle ↗
               </a>
             </div>
           </div>
