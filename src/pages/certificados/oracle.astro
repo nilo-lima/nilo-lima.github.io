@@ -6,48 +6,52 @@ const title       = 'Badges Oracle | Nilo Lima Jr';
 const description = 'Conquistas e certificações Oracle (OCI, IA, Dados, ERP e MySQL) com badge verificável.';
 
 // A Oracle não oferece um portal público de badges (estilo Credly/Accredible).
-// Para novas conquistas: salve o JPG/PNG em public/oracle-badges/, adicione a
-// entrada abaixo com o link "Share Badge" gerado no catalog-education.oracle.com.
-const oracleBadges: { name: string; image: string; verifyUrl: string }[] = [
+// Para novas conquistas: remova o fundo da imagem (PNG transparente) e salve em
+// public/oracle-badges/, depois adicione a entrada abaixo com o link "Share Badge"
+// gerado no catalog-education.oracle.com (ou o link da learning path, para trilhas).
+// lightBg: true para artes com texto escuro pensado para fundo claro (senão fica ilegível no card escuro).
+const oracleBadges: { name: string; image: string; verifyUrl: string; linkLabel?: string; lightBg?: boolean }[] = [
   {
     name: 'Oracle Cloud Infrastructure Certified Architect Associate',
-    image: '/oracle-badges/oracle-cloud-infrastructure-certified-architect-associate.jpg',
+    image: '/oracle-badges/oracle-cloud-infrastructure-certified-architect-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=4F678CE6E47BF6165BAA78AC4689823412A96DFA153213221121697341298FC6',
   },
   {
     name: 'Oracle AI Database Certified Foundations Associate',
-    image: '/oracle-badges/oracle-ai-database-certified-foundations-associate.jpg',
+    image: '/oracle-badges/oracle-ai-database-certified-foundations-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=51FDC261224CA663FB94239BA25D73BB79DC5140393A5F860A77FBE8DFA2169E',
   },
   {
     name: 'Agentic AI Certified Foundations Associate',
-    image: '/oracle-badges/agentic-ai-certified-foundations-associate.jpg',
+    image: '/oracle-badges/agentic-ai-certified-foundations-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=64EFBF3B9B493DD90CBC09E223AFCCC0B5450D571596341423F0EF3A1E031741',
   },
   {
     name: 'Oracle Fusion Cloud Applications ERP Process Essentials Certified - Rel 1',
-    image: '/oracle-badges/oracle-fusion-cloud-applications-erp-process-essentials-certified-rel-1.jpg',
+    image: '/oracle-badges/oracle-fusion-cloud-applications-erp-process-essentials-certified-rel-1.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=3BAC8D0FA50BDB052310C825A2A8B03F9AF6037E22C95E9E47BB6AA2751EE2B1',
   },
   {
     name: 'Oracle Data Platform 2025 Certified Foundations Associate',
-    image: '/oracle-badges/oracle-data-platform-2025-certified-foundations-associate.jpg',
+    image: '/oracle-badges/oracle-data-platform-2025-certified-foundations-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=1816E4191DD806ACCEC48A9450ADAFC96F602ED2B90B407472D9927509CD987F',
   },
   {
     name: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate',
-    image: '/oracle-badges/oracle-cloud-infrastructure-2025-certified-ai-foundations-associate.jpeg',
+    image: '/oracle-badges/oracle-cloud-infrastructure-2025-certified-ai-foundations-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=3148046EA5A471A6CD3896A05DA247C7CC4D83FDAF59203E6DBEAC3B899A9434',
   },
   {
     name: 'Oracle Cloud Infrastructure 2025 Certified Foundations Associate',
-    image: '/oracle-badges/oracle-cloud-infrastructure-2025-certified-foundations-associate.jpeg',
+    image: '/oracle-badges/oracle-cloud-infrastructure-2025-certified-foundations-associate.png',
     verifyUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=964E6F37232BE132EF49BD2B045F642BFF9959A3F7DF7BE968E3D0823444A56B',
   },
   {
     name: 'MySQL Database Service Oracle Learning Explorer',
     image: '/oracle-badges/mysql-database-service-oracle-learning-explorer.png',
     verifyUrl: 'https://mylearn.oracle.com/ou/learning-path/mysql-heatwave-explorer/100210',
+    linkLabel: 'Ver trilha concluída ↗',
+    lightBg: true,
   },
 ];
 
@@ -77,7 +81,7 @@ const breadcrumbJsonLd = {
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       {oracleBadges.map(badge => (
         <div class="flex flex-col bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all overflow-hidden">
-          <div class="aspect-square bg-white flex items-center justify-center p-3">
+          <div class:list={["aspect-square flex items-center justify-center p-3", { "bg-white": badge.lightBg }]}>
             <img
               src={badge.image}
               alt={badge.name}
@@ -95,7 +99,7 @@ const breadcrumbJsonLd = {
               rel="noopener noreferrer"
               class="text-[11px] font-mono text-primary hover:underline tracking-wide uppercase"
             >
-              Verificar credencial ↗
+              {badge.linkLabel ?? 'Verificar credencial ↗'}
             </a>
           </div>
         </div>
