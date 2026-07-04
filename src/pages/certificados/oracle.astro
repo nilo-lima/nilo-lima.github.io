@@ -10,7 +10,8 @@ const description = 'Conquistas e certificações Oracle (OCI, IA, Dados, ERP e 
 // public/oracle-badges/, depois adicione a entrada abaixo com o link "Share Badge"
 // gerado no catalog-education.oracle.com (ou o link da learning path, para trilhas).
 // lightBg: true para artes com texto escuro pensado para fundo claro (senão fica ilegível no card escuro).
-const oracleBadges: { name: string; image: string; verifyUrl: string; linkLabel?: string; lightBg?: boolean }[] = [
+// verifyUrl é opcional: alguns badges (ex: Oracle University genérico) não têm link de verificação — o card fica sem link.
+const oracleBadges: { name: string; image: string; verifyUrl?: string; linkLabel?: string; lightBg?: boolean }[] = [
   {
     name: 'Oracle Cloud Infrastructure Certified Architect Associate',
     image: '/oracle-badges/oracle-cloud-infrastructure-certified-architect-associate.png',
@@ -53,6 +54,10 @@ const oracleBadges: { name: string; image: string; verifyUrl: string; linkLabel?
     linkLabel: 'Ver trilha concluída ↗',
     lightBg: true,
   },
+  {
+    name: 'Oracle University',
+    image: '/oracle-badges/oracle-university.png',
+  },
 ];
 
 const breadcrumbJsonLd = {
@@ -93,14 +98,16 @@ const breadcrumbJsonLd = {
           </div>
           <div class="p-3 flex flex-col gap-2 flex-1">
             <p class="text-xs text-accent leading-snug line-clamp-3 flex-1">{badge.name}</p>
-            <a
-              href={badge.verifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[11px] font-mono text-primary hover:underline tracking-wide uppercase"
-            >
-              {badge.linkLabel ?? 'Verificar credencial ↗'}
-            </a>
+            {badge.verifyUrl && (
+              <a
+                href={badge.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[11px] font-mono text-primary hover:underline tracking-wide uppercase"
+              >
+                {badge.linkLabel ?? 'Verificar credencial ↗'}
+              </a>
+            )}
           </div>
         </div>
       ))}
