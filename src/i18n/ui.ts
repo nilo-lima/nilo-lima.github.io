@@ -38,13 +38,13 @@ export const ui = {
     about: {
       tag: '01 // Sobre Mim',
       paragraphs: [
-        'Ao longo da minha trajetória em Tecnologia, vivi a evolução da TI de perto, dos ambientes totalmente on-premise até a adoção de cloud, automação e novas arquiteturas.',
+        'Ao longo da minha trajetória em Tecnologia, vivenciei a evolução da TI de perto, dos ambientes totalmente on-premise até a adoção de cloud, automação e novas arquiteturas.',
         'Comecei minha carreira com uma base muito forte em infraestrutura e sistemas, atuando em ambientes críticos e de alta exigência, onde disponibilidade, estabilidade e resposta rápida não eram diferenciais: eram obrigatórios.',
         'Com o tempo, fui assumindo desafios maiores, liderando equipes e estruturando a área de tecnologia de forma mais estratégica. Mas foi nos últimos anos que aconteceu a virada mais importante da minha carreira: sair de um modelo tradicional de TI para uma abordagem mais moderna, orientada à cloud, automação e eficiência operacional.',
-        'Tenho atuado diretamente na migração de ambientes para AWS e Azure, na implementação de automação com Terraform e Ansible, e na construção de ambientes mais escaláveis com Docker e Kubernetes. Mais do que adotar ferramentas, meu foco sempre foi reduzir complexidade, melhorar a confiabilidade dos sistemas e dar mais velocidade para o negócio.',
+        'Tenho utilizado diretamente ambientes AWS e Azure, implementado automação com Terraform e Ansible, e construído ambientes mais escaláveis com Docker. Mais do que adotar ferramentas, meu foco sempre foi reduzir complexidade, melhorar a confiabilidade dos sistemas e dar mais velocidade para o negócio.',
         'Gosto de atuar na intersecção entre tecnologia e negócio, entendendo o problema real e construindo soluções que façam sentido na prática, não só no desenho.',
         'Minha base em infraestrutura, somada à evolução para práticas de DevOps e cloud, me permite olhar o ambiente de forma completa: da sustentação à modernização.',
-        'Hoje, busco oportunidades onde eu possa continuar evoluindo nesse contexto de tecnologia moderna, contribuindo com ambientes mais automatizados, resilientes e preparados para crescer.',
+        'Hoje, continuo evoluindo nesse contexto de tecnologia moderna, contribuindo com ambientes mais automatizados, resilientes e preparados para crescer.',
       ],
       p3Pre: 'Acredito que aprendizado contínuo é a única constante da área, e por isso boa parte do que aparece em ',
       p3LinkLabel: '/projetos',
@@ -55,8 +55,8 @@ export const ui = {
       categories: [
         { category: 'Multi-Cloud Platforms', tools: ['AWS', 'Azure', 'Google Cloud (GCP)', 'Oracle Cloud (OCI)'] },
         { category: 'Infrastructure as Code', tools: ['Terraform', 'Ansible', 'Vagrant', 'CloudFormation'] },
-        { category: 'Containers & Orchestration', tools: ['Docker', 'Kubernetes', 'Helm', 'Kind / LocalStack'] },
-        { category: 'CI/CD & GitOps', tools: ['GitHub Actions', 'GitLab CI', 'Jenkins', 'Git · Gitea'] },
+        { category: 'Containers & Orchestration', tools: ['Docker', 'LocalStack'] },
+        { category: 'CI/CD & GitOps', tools: ['GitHub Actions', 'GitLab CI', 'Git · Gitea'] },
         { category: 'Observability & SRE', tools: ['Prometheus', 'Grafana', 'Zabbix', 'Wazuh'] },
         { category: 'Linux & Scripting', tools: ['Linux (Debian · RHEL · CentOS)', 'Bash', 'PowerShell', 'Python'] },
         { category: 'Bancos de Dados', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Oracle DB', 'SQL Server'] },
@@ -84,7 +84,7 @@ export const ui = {
           role: 'Gestor de TI',
           company: 'Full Gauge Controls',
           period: '2002–2025',
-          description: `<p>Responsável pela evolução da infraestrutura tecnológica da Full Gauge Controls, conduzindo a modernização dos ambientes e a adoção de práticas de Cloud e DevOps em escala corporativa.</p><p class="mt-3 font-semibold text-accent">Principais realizações:</p><ul class="mt-1 space-y-1 pl-4 list-disc list-outside marker:text-primary"><li>Estruturação e migração de ambientes para Cloud (AWS e Azure), com desenho de arquiteturas híbridas, alta disponibilidade e otimização de custos.</li><li>Implantação de infraestrutura moderna baseada em containers (Docker) e orquestração com Kubernetes, suportando escalabilidade e flexibilidade das aplicações.</li><li>Automação de provisionamento e operações com Terraform e Ansible, reduzindo atividades manuais e aumentando eficiência operacional.</li><li>Implementação de pipelines de integração e dados via APIs e Apache Hop, viabilizando integração entre sistemas e evolução tecnológica.</li><li>Estruturação de monitoramento e observabilidade com Zabbix, garantindo visibilidade e atuação proativa sobre incidentes.</li><li>Implementação de estratégia de segurança com SIEM (Wazuh), políticas baseadas em ISO 27001 e planos de continuidade (BCP/DRP).</li><li>Modernização e integração de ERPs (Dynamics AX e WK Radar), otimizando processos e suportando crescimento do negócio.</li><li>Garantia de 99,9% de disponibilidade dos sistemas críticos, com redução significativa de indisponibilidade através de monitoramento e DRP.</li><li>Liderança técnica e desenvolvimento de equipe, direcionando a adoção de novas tecnologias e práticas modernas.</li></ul><p class="mt-3 font-mono text-xs text-primary/70"><span class="font-semibold text-primary/90">Stack:</span> AWS | Azure | Kubernetes | Terraform | Ansible | Docker | Python | Power BI | Wazuh | Zabbix | SQL Server | PostgreSQL | Oracle | Git</p>`,
+          description: `<p>Responsável pela evolução da infraestrutura tecnológica da Full Gauge Controls, conduzindo a modernização dos ambientes e a adoção de práticas de Cloud e DevOps em escala corporativa.</p><p class="mt-3 font-semibold text-accent">Principais realizações:</p><ul class="mt-1 space-y-1 pl-4 list-disc list-outside marker:text-primary"><li>Estruturação e migração de ambientes para Cloud (AWS e Azure), com desenho de arquiteturas híbridas, alta disponibilidade e otimização de custos.</li><li>Implantação de infraestrutura moderna baseada em containers (Docker), suportando escalabilidade e flexibilidade das aplicações.</li><li>Automação de provisionamento e operações com Terraform e Ansible, reduzindo atividades manuais e aumentando eficiência operacional.</li><li>Implementação de pipelines de integração e dados via APIs e Apache Hop, viabilizando integração entre sistemas e evolução tecnológica.</li><li>Estruturação de monitoramento e observabilidade com Zabbix, garantindo visibilidade e atuação proativa sobre incidentes.</li><li>Implementação de estratégia de segurança com SIEM (Wazuh), políticas baseadas em ISO 27001 e planos de continuidade (BCP/DRP).</li><li>Modernização e integração de ERPs (Dynamics AX e WK Radar), otimizando processos e suportando crescimento do negócio.</li><li>Garantia de 99,9% de disponibilidade dos sistemas críticos, com redução significativa de indisponibilidade através de monitoramento e DRP.</li><li>Liderança técnica e desenvolvimento de equipe, direcionando a adoção de novas tecnologias e práticas modernas.</li></ul><p class="mt-3 font-mono text-xs text-primary/70"><span class="font-semibold text-primary/90">Stack:</span> AWS | Azure | Terraform | Ansible | Docker | Python | Power BI | Wazuh | Zabbix | SQL Server | PostgreSQL | Oracle | Git</p>`,
         },
         {
           role: 'Especialista em TI',
@@ -158,7 +158,7 @@ export const ui = {
       tag: '01 // About',
       paragraphs: [
         'Consolidated track record in IT leadership, turning complex infrastructures into strategic assets. As an IT Manager, I focus on governance, compliance and cost optimization; as a DevOps & Cloud Specialist, I ensure execution rooted in resilience, automation and end-to-end observability.',
-        'I work with Infrastructure as Code across multi-cloud environments (AWS, Azure, GCP and OCI), combining containers, Kubernetes and GitOps to deliver scalable platforms. More recently, I apply AI & LLM Ops to infrastructure operations, turning assistants into reliable engineering partners.',
+        'I work with Infrastructure as Code across multi-cloud environments (AWS, Azure, GCP and OCI), combining containers and GitOps to deliver scalable platforms. More recently, I apply AI & LLM Ops to infrastructure operations, turning assistants into reliable engineering partners.',
       ],
       p3Pre: 'Continuous learning is the only constant in this field, that is why much of what appears in ',
       p3LinkLabel: '/projects',
@@ -169,8 +169,8 @@ export const ui = {
       categories: [
         { category: 'Multi-Cloud Platforms', tools: ['AWS', 'Azure', 'Google Cloud (GCP)', 'Oracle Cloud (OCI)'] },
         { category: 'Infrastructure as Code', tools: ['Terraform', 'Ansible', 'Vagrant', 'CloudFormation'] },
-        { category: 'Containers & Orchestration', tools: ['Docker', 'Kubernetes', 'Helm', 'Kind / LocalStack'] },
-        { category: 'CI/CD & GitOps', tools: ['GitHub Actions', 'GitLab CI', 'Jenkins', 'Git · Gitea'] },
+        { category: 'Containers & Orchestration', tools: ['Docker', 'LocalStack'] },
+        { category: 'CI/CD & GitOps', tools: ['GitHub Actions', 'GitLab CI', 'Git · Gitea'] },
         { category: 'Observability & SRE', tools: ['Prometheus', 'Grafana', 'Zabbix', 'Wazuh'] },
         { category: 'Linux & Scripting', tools: ['Linux (Debian · RHEL · CentOS)', 'Bash', 'PowerShell', 'Python'] },
         { category: 'Databases', tools: ['PostgreSQL', 'MySQL', 'MongoDB', 'Oracle DB', 'SQL Server'] },
