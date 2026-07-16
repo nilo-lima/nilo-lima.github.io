@@ -30,10 +30,10 @@ export const ui = {
     },
     hero: {
       init: 'INIT: PORTFOLIO_LOADED',
-      h1: 'Nilo Lima Jr | Gestor de TI e Especialista em DevOps, Cloud e IA',
-      title: 'Gestor de TI & Especialista',
-      titleHighlight: 'DevOps · Cloud · IA',
-      lead: 'Conecto infraestrutura crítica a resultados de negócio com automação multi-cloud, governança de plataformas e adoção pragmática de IA para elevar a eficiência operacional.',
+      h1: 'Nilo Lima Jr | Profissional de TI e Especialista em Infraestrutura, DevOps, Cloud e IA',
+      title: 'Profissional de TI & Especialista em',
+      titleHighlight: 'Infraestrutura · DevOps · Cloud · IA',
+      lead: 'Conecto infraestrutura crítica a resultados de negócio: automação multi-cloud, governança de plataformas e IA aplicada para reduzir custos, ganhar eficiência operacional e sustentar a inovação.',
     },
     about: {
       tag: '01 // Sobre Mim',
@@ -149,15 +149,15 @@ export const ui = {
     },
     hero: {
       init: 'INIT: PORTFOLIO_LOADED',
-      h1: 'Nilo Lima Jr | IT Manager and DevOps, Cloud & AI Specialist',
-      title: 'IT Manager & Specialist',
-      titleHighlight: 'DevOps · Cloud · AI',
-      lead: 'I connect critical infrastructure to business outcomes through multi-cloud automation, platform governance and pragmatic AI adoption to raise operational efficiency.',
+      h1: 'Nilo Lima Jr | IT Professional and Specialist in Infrastructure, DevOps, Cloud & AI',
+      title: 'IT Professional & Specialist in',
+      titleHighlight: 'Infrastructure · DevOps · Cloud · AI',
+      lead: 'I connect critical infrastructure to business outcomes: multi-cloud automation, platform governance and applied AI to reduce costs, drive operational efficiency and sustain innovation.',
     },
     about: {
       tag: '01 // About',
       paragraphs: [
-        'Consolidated track record in IT leadership, turning complex infrastructures into strategic assets. As an IT Manager, I focus on governance, compliance and cost optimization; as a DevOps & Cloud Specialist, I ensure execution rooted in resilience, automation and end-to-end observability.',
+        'Consolidated track record in IT leadership, turning complex infrastructures into strategic assets. As an IT Professional, I focus on governance, compliance and cost optimization; as a DevOps & Cloud Specialist, I ensure execution rooted in resilience, automation and end-to-end observability.',
         'I work with Infrastructure as Code across multi-cloud environments (AWS, Azure, GCP and OCI), combining containers and GitOps to deliver scalable platforms. More recently, I apply AI & LLM Ops to infrastructure operations, turning assistants into reliable engineering partners.',
       ],
       p3Pre: 'Continuous learning is the only constant in this field, that is why much of what appears in ',

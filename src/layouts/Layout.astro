@@ -20,8 +20,8 @@ const {
 } = Astro.props;
 
 const defaultDescription = lang === 'en'
-	? "Nilo Lima Jr: IT Manager & DevOps/Cloud/AI specialist. Multi-cloud (AWS · Azure · GCP · OCI), Kubernetes, GitOps and AI applied to infrastructure."
-	: "Nilo Lima Jr: Portfólio estratégico de Gestor de TI e Especialista em DevOps, Cloud (AWS · Azure · GCP · OCI), Kubernetes e IA aplicada a infraestrutura.";
+	? "Nilo Lima Jr: IT Professional & DevOps/Cloud/AI specialist. Multi-cloud (AWS · Azure · GCP · OCI), GitOps and AI applied to infrastructure."
+	: "Nilo Lima Jr: Portfólio estratégico de Profissional de TI e Especialista em DevOps, Cloud (AWS · Azure · GCP · OCI) e IA aplicada a infraestrutura.";
 
 const finalDescription = description ?? defaultDescription;
 
@@ -40,7 +40,7 @@ const personJsonLd = {
 	"@type": "Person",
 	name: "Nilo Lima Jr",
 	url: siteUrl.toString(),
-	jobTitle: lang === 'en' ? "IT Manager & DevOps/Cloud/AI Specialist" : "Gestor de TI & Especialista DevOps/Cloud/IA",
+	jobTitle: lang === 'en' ? "IT Professional & DevOps/Cloud/AI Specialist" : "Profissional de TI & Especialista DevOps/Cloud/IA",
 	description: defaultDescription,
 	sameAs: [
 		"https://www.linkedin.com/in/nilolima/",
@@ -49,7 +49,7 @@ const personJsonLd = {
 	],
 	knowsAbout: [
 		"DevOps", "Cloud Computing", "AWS", "Azure", "Google Cloud", "Oracle Cloud",
-		"Terraform", "Kubernetes", "Docker", "GitOps", "CI/CD", "Linux",
+		"Terraform", "Docker", "GitOps", "CI/CD", "Linux",
 		"Infrastructure as Code", "Site Reliability Engineering",
 		"Artificial Intelligence", "LLM Ops"
 	],
@@ -101,7 +101,7 @@ const personJsonLd = {
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={finalDescription} />
 		<meta name="twitter:image" content={ogImageUrl} />
-		<meta name="twitter:image:alt" content="Nilo Lima Jr — Gestor de TI & Especialista DevOps · Cloud · IA" />
+		<meta name="twitter:image:alt" content="Nilo Lima Jr — Profissional de TI & Especialista DevOps · Cloud · IA" />
 		<!-- JSON-LD Person -->
 		<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
 		<!-- JSON-LD Article (posts individuais) -->
