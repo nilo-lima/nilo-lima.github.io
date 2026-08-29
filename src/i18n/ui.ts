@@ -30,9 +30,9 @@ export const ui = {
     },
     hero: {
       init: 'INIT: PORTFOLIO_LOADED',
-      h1: 'Nilo Lima Jr | Profissional de TI e Especialista em Infraestrutura, DevOps, Cloud e IA',
-      title: 'Profissional de TI & Especialista em',
-      titleHighlight: 'Infraestrutura · DevOps · Cloud · IA',
+      h1: 'Nilo Lima Jr | Gestor de TI | Liderança Tecnológica em Infraestrutura, Sistemas e Nuvem',
+      title: 'Gestor de TI |',
+      titleHighlight: 'Liderança Tecnológica em Infraestrutura, Sistemas e Nuvem',
       lead: 'Conecto infraestrutura crítica a resultados de negócio: automação multi-cloud, governança de plataformas e IA aplicada para reduzir custos, ganhar eficiência operacional e sustentar a inovação.',
     },
     about: {
@@ -154,9 +154,9 @@ export const ui = {
     },
     hero: {
       init: 'INIT: PORTFOLIO_LOADED',
-      h1: 'Nilo Lima Jr | IT Professional and Specialist in Infrastructure, DevOps, Cloud & AI',
-      title: 'IT Professional & Specialist in',
-      titleHighlight: 'Infrastructure · DevOps · Cloud · AI',
+      h1: 'Nilo Lima Jr | IT Manager | Technology Leadership in Infrastructure, Systems and Cloud',
+      title: 'IT Manager |',
+      titleHighlight: 'Technology Leadership in Infrastructure, Systems and Cloud',
       lead: 'I connect critical infrastructure to business outcomes: multi-cloud automation, platform governance and applied AI to reduce costs, drive operational efficiency and sustain innovation.',
     },
     about: {
