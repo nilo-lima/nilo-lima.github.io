@@ -80,6 +80,12 @@ export const ui = {
       tag: '05 // Experiência',
       items: [
         {
+          role: 'Coordenador de Infraestrutura de TI',
+          company: 'Innova',
+          period: '2026–atual',
+          description: `<ul class="space-y-1 pl-4 list-disc list-outside marker:text-primary"><li>Coordenação da infraestrutura de TI corporativa, com foco em governança de processos baseada em ITIL.</li><li>Gestão de Help Desk e Service Desk, elevando eficiência operacional e qualidade de atendimento.</li><li>Condução de iniciativas de redução de custos e otimização de recursos de infraestrutura.</li><li>Liderança de projetos de inovação tecnológica, com foco em experiência do usuário e do cliente (UX/CX).</li></ul>`,
+        },
+        {
           role: 'Gestor de TI',
           company: 'Full Gauge Controls',
           period: '2002–2025',
@@ -197,6 +203,12 @@ export const ui = {
     experience: {
       tag: '05 // Experience',
       items: [
+        {
+          role: 'IT Infrastructure Coordinator',
+          company: 'Innova',
+          period: '2026–present',
+          description: 'IT Infrastructure Coordinator focused on ITIL-based process governance, Help & Service Desk management, operational efficiency and cost reduction - leading innovation projects with an emphasis on UX/CX (user and customer experience).',
+        },
         {
           role: 'IT Manager',
           company: 'Full Gauge Controls',
