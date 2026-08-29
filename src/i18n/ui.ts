@@ -33,7 +33,7 @@ export const ui = {
       h1: 'Nilo Lima Jr | Gestor de TI | Liderança Tecnológica em Infraestrutura, Sistemas e Nuvem',
       title: 'Gestor de TI |',
       titleHighlight: 'Liderança Tecnológica em Infraestrutura, Sistemas e Nuvem',
-      lead: 'Conecto infraestrutura crítica a resultados de negócio: automação multi-cloud, governança de plataformas e IA aplicada para reduzir custos, ganhar eficiência operacional e sustentar a inovação.',
+      lead: 'Atuo na gestão de tecnologia, unindo mais de 30 anos de base técnica em infraestrutura, sistemas e nuvem à condução de pessoas, orçamento e resultado de negócio.',
     },
     about: {
       tag: '01 // Sobre Mim',
@@ -157,7 +157,7 @@ export const ui = {
       h1: 'Nilo Lima Jr | IT Manager | Technology Leadership in Infrastructure, Systems and Cloud',
       title: 'IT Manager |',
       titleHighlight: 'Technology Leadership in Infrastructure, Systems and Cloud',
-      lead: 'I connect critical infrastructure to business outcomes: multi-cloud automation, platform governance and applied AI to reduce costs, drive operational efficiency and sustain innovation.',
+      lead: 'I work in technology management, combining more than 30 years of technical foundation in infrastructure, systems and cloud with leading people, budget and business outcomes.',
     },
     about: {
       tag: '01 // About',
