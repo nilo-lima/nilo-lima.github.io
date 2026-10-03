@@ -10,7 +10,9 @@
 
 import { google } from 'googleapis';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __dirname  = path.dirname(fileURLToPath(import.meta.url));
@@ -68,7 +70,7 @@ async function listFiles(folderId) {
   do {
     const res = await drive.files.list({
       q: `'${folderId}' in parents and mimeType != 'application/vnd.google-apps.folder' and trashed = false`,
-      fields: 'nextPageToken, files(id, name, thumbnailLink)',
+      fields: 'nextPageToken, files(id, name, mimeType, thumbnailLink)',
       orderBy: 'name',
       pageSize: 200,
       pageToken,
@@ -96,6 +98,26 @@ async function downloadThumbnail(fileId, thumbnailLink) {
   }
 }
 
+// Fallback para PDFs sem thumbnail no Drive (hasThumbnail: false):
+// baixa o arquivo e renderiza a 1ª página com pdftoppm (poppler-utils).
+async function renderPdfThumbnail(fileId) {
+  const destPath = path.join(THUMB_DIR, `${fileId}.png`);
+  if (fs.existsSync(destPath)) return true;
+
+  const tmpBase = path.join(os.tmpdir(), `cert-${fileId}`);
+  try {
+    const res = await drive.files.get({ fileId, alt: 'media' }, { responseType: 'arraybuffer' });
+    fs.writeFileSync(`${tmpBase}.pdf`, Buffer.from(res.data));
+    execFileSync('pdftoppm', ['-png', '-singlefile', '-f', '1', '-scale-to', '400', `${tmpBase}.pdf`, tmpBase], { stdio: 'ignore' });
+    fs.renameSync(`${tmpBase}.png`, destPath);
+    return true;
+  } catch {
+    return false;
+  } finally {
+    fs.rmSync(`${tmpBase}.pdf`, { force: true });
+  }
+}
+
 async function main() {
   console.log('🔄 Sincronizando certificados do Google Drive...');
   fs.mkdirSync(THUMB_DIR, { recursive: true });
@@ -116,10 +138,15 @@ async function main() {
 
     let thumbOk = 0;
     for (const file of files) {
+      let ok = false;
       if (file.thumbnailLink) {
-        const ok = await downloadThumbnail(file.id, file.thumbnailLink);
-        if (ok) thumbOk++;
+        ok = await downloadThumbnail(file.id, file.thumbnailLink);
       }
+      if (!ok && file.mimeType === 'application/pdf') {
+        ok = await renderPdfThumbnail(file.id);
+        if (ok) console.log(`     🖨️  Thumbnail renderizado localmente: ${file.name}`);
+      }
+      if (ok) thumbOk++;
     }
     console.log(`     📸 ${thumbOk}/${files.length} thumbnails`);
 

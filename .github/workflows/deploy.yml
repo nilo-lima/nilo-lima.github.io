@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install poppler-utils (PDF thumbnail fallback)
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
       - name: Sync certificates from Google Drive
         env:
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
